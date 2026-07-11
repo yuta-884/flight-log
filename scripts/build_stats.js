@@ -55,9 +55,8 @@ function parseNaive(s) {
   return s ? Date.parse(`${s}:00Z`) : null; // 同一空港同士の差分にのみ使う（TZは相殺）
 }
 
-// フライトi の到着後の滞在が乗り継ぎかどうか
-function isLayoverStay(f, next) {
-  if (f.layover !== null) return f.layover; // 手動オーバーライド優先
+// 同一空港・閾値時間内の接続か（乗り継ぎ自動判定と空港タッチ数の集約で共用）
+function isConnection(f, next) {
   if (!next || next.origin_iata !== effDest(f)) return false; // 空港コード厳密一致
   const arr = parseNaive(f.scheduled_arrival);
   const dep = parseNaive(next.scheduled_departure);
@@ -65,9 +64,15 @@ function isLayoverStay(f, next) {
     const hours = (dep - arr) / 3600000;
     return hours >= 0 && hours <= LAYOVER_THRESHOLD_HOURS;
   }
-  // 時刻欠損時のフォールバック: 日付差1日以内なら乗り継ぎ扱い
+  // 時刻欠損時のフォールバック: 日付差1日以内なら接続扱い
   const dayDiff = (Date.parse(next.flight_date) - Date.parse(f.flight_date)) / 86400000;
   return dayDiff <= 1;
+}
+
+// フライトi の到着後の滞在が乗り継ぎかどうか
+function isLayoverStay(f, next) {
+  if (f.layover !== null) return f.layover; // 手動オーバーライド優先
+  return isConnection(f, next);
 }
 
 // 滞在リストを構築
@@ -87,7 +92,8 @@ for (let i = 0; i < flights.length; i++) {
   stays.push({ iata: dest, country: countryOf(dest), layover: isLayoverStay(f, next) });
 }
 
-// 総飛行時間: 実離着陸 → ゲート実時刻 → 予定時刻 の順で使えるペアを採用し、
+// 総飛行時間: ゲート間（ブロックタイム）で数える（Flightyと同基準）。
+// 実ゲート発着ペア → 予定時刻 → 実離着陸 の順で使えるペアを採用し、
 // 空港マスタのtz database名でナイーブなローカル時刻をUTCに換算して差を取る
 const tzCache = new Map();
 function localToUtcMs(naive, tz) {
@@ -113,9 +119,9 @@ function flightMinutes(f) {
     return null;
   }
   const pairs = [
-    [f.ops?.actual_takeoff, f.ops?.actual_landing],
     [f.ops?.actual_gate_departure, f.ops?.actual_gate_arrival],
     [f.scheduled_departure, f.scheduled_arrival],
+    [f.ops?.actual_takeoff, f.ops?.actual_landing],
   ];
   for (const [dep, arr] of pairs) {
     if (!dep || !arr) continue;
@@ -136,12 +142,14 @@ for (const f of flights) {
   }
 }
 
-// Top Airports（発着それぞれ1カウント、実効到着地ベース）/ Top Airlines（便数）
+// 空港別タッチ数（発着それぞれ1カウント、実効到着地ベース）。
+// ただし同一空港・閾値内の接続（乗り継ぎ）は物理的には1回の立ち寄りなので
+// 1タッチに集約する（Flightyの空港カウントと同基準）/ 航空会社別は便数
 const airportCounts = new Map();
 const airlineCounts = new Map();
 for (const f of flights) {
   for (const iata of [f.origin_iata, effDest(f)]) {
-    const cur = airportCounts.get(iata) ?? { iata, city: airports.get(iata)?.city ?? null, count: 0 };
+    const cur = airportCounts.get(iata) ?? { iata, count: 0 };
     cur.count++;
     airportCounts.set(iata, cur);
   }
@@ -150,8 +158,11 @@ for (const f of flights) {
   cur.count++;
   airlineCounts.set(key, cur);
 }
-const topAirports = [...airportCounts.values()].sort((a, b) => b.count - a.count || a.iata.localeCompare(b.iata));
-const topAirlines = [...airlineCounts.values()].sort((a, b) => b.count - a.count || a.code.localeCompare(b.code));
+for (let i = 0; i < flights.length - 1; i++) {
+  if (isConnection(flights[i], flights[i + 1])) airportCounts.get(effDest(flights[i])).count--;
+}
+const airportRanking = [...airportCounts.values()].sort((a, b) => b.count - a.count || a.iata.localeCompare(b.iata));
+const airlineRanking = [...airlineCounts.values()].sort((a, b) => b.count - a.count || a.code.localeCompare(b.code));
 
 // 国別の滞在回数（乗り継ぎ含む／除く）
 function countryVisits(includeLayovers) {
@@ -195,8 +206,8 @@ const stats = {
     total_minutes: totalFlightMinutes,
     flights_counted: flightTimeCounted, // 時刻データがあり集計に入った便数
   },
-  top_airports: topAirports,
-  top_airlines: topAirlines,
+  airports: { count: airportRanking.length, ranking: airportRanking },
+  airlines: { count: airlineRanking.length, ranking: airlineRanking },
 };
 
 writeFileSync(outPath, JSON.stringify(stats, null, 2) + '\n');
@@ -205,5 +216,5 @@ console.log(`stats.json generated: ${outPath}`);
 console.log(`  flights: ${stats.total_flights}, distance: ${totalDistance} km`);
 console.log(`  countries: incl=${visitsIncl.length}, excl=${visitsExcl.length}`);
 console.log(`  flight time: ${Math.floor(totalFlightMinutes / 60)}h ${totalFlightMinutes % 60}m (${flightTimeCounted}/${flights.length} flights)`);
-console.log(`  top airport: ${topAirports[0]?.iata}(${topAirports[0]?.count}), top airline: ${topAirlines[0]?.code}(${topAirlines[0]?.count})`);
+console.log(`  airports: ${airportRanking.length} (top ${airportRanking[0]?.iata}:${airportRanking[0]?.count}), airlines: ${airlineRanking.length} (top ${airlineRanking[0]?.code}:${airlineRanking[0]?.count})`);
 for (const w of warnings) console.warn(`WARN: ${w}`);

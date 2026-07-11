@@ -6,34 +6,64 @@
   <title>flight-log</title>
   <style>
     :root {
-      --fg: #1a1a2e; --muted: #7a7a8c; --bg: #f7f7fa; --card: #fff;
-      --accent: #2456e6; --border: #e4e4ec;
+      --fg: #1c1c2e; --muted: #6f7288; --bg: #eef0f7; --card: #ffffff;
+      --accent: #2456e6; --accent2: #16b8c9; --row: #e7e9f2;
+      --glow: 0 20px 45px rgba(36, 86, 230, .10), 0 2px 10px rgba(20, 20, 40, .06);
     }
     @media (prefers-color-scheme: dark) {
-      :root { --fg: #ececf2; --muted: #9a9aac; --bg: #14141c; --card: #1e1e2a; --accent: #6f96ff; --border: #2e2e3c; }
+      :root {
+        --fg: #eef0fa; --muted: #8e93ad; --bg: #0b0d16; --card: #151827;
+        --accent: #6f96ff; --accent2: #3fe0d0; --row: #232841;
+        --glow: 0 20px 50px rgba(30, 60, 180, .22), 0 2px 12px rgba(0, 0, 0, .45);
+      }
     }
     * { box-sizing: border-box; }
-    body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--fg); max-width: 52rem; margin: 0 auto; padding: 2rem 1rem 4rem; }
-    h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
-    .sub { color: var(--muted); font-size: .85rem; margin-bottom: 2rem; }
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1rem; }
-    .card { background: var(--card); border: 1px solid var(--border); border-radius: .75rem; padding: 1.1rem 1.25rem; }
-    .card h2 { font-size: .8rem; font-weight: 600; color: var(--muted); margin: 0 0 .5rem; }
-    .big { font-size: 2.2rem; font-weight: 700; line-height: 1.1; }
-    .unit { font-size: 1rem; font-weight: 400; color: var(--muted); }
+    body {
+      font-family: system-ui, sans-serif; color: var(--fg); max-width: 52rem;
+      margin: 0 auto; padding: 2rem 1rem 4rem; min-height: 100vh;
+      background: var(--bg);
+      background-image:
+        radial-gradient(60rem 30rem at 110% -10%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 60%),
+        radial-gradient(50rem 28rem at -20% 110%, color-mix(in srgb, var(--accent2) 12%, transparent), transparent 60%);
+      background-attachment: fixed;
+    }
+    h1 { font-size: 1.5rem; margin: 0 0 .25rem; letter-spacing: .02em; }
+    .sub { color: var(--muted); font-size: .8rem; margin-bottom: 2rem; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1.1rem; }
+    .card {
+      position: relative; border: none; border-radius: 1.1rem; padding: 1.2rem 1.35rem;
+      background:
+        linear-gradient(155deg, color-mix(in srgb, var(--card) 88%, var(--accent)) 0%, var(--card) 45%);
+      box-shadow: var(--glow);
+      overflow: hidden;
+    }
+    .card::before {
+      content: ''; position: absolute; inset: 0 0 auto 0; height: 1px;
+      background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent2) 55%, transparent), transparent);
+    }
+    .card h2 {
+      font-size: .68rem; font-weight: 700; color: var(--muted);
+      text-transform: uppercase; letter-spacing: .18em; margin: 0 0 .6rem;
+    }
+    .big {
+      font-size: 2.3rem; font-weight: 800; line-height: 1.1; letter-spacing: -.01em;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .unit { font-size: 1rem; font-weight: 500; }
     .pair { display: flex; gap: 2rem; }
     .pair .label { font-size: .72rem; color: var(--muted); }
-    .conversions { font-size: .82rem; color: var(--muted); margin-top: .5rem; }
-    table { width: 100%; border-collapse: collapse; margin-top: .25rem; font-size: .9rem; }
-    th, td { text-align: right; padding: .35rem .5rem; border-bottom: 1px solid var(--border); }
+    .conversions { font-size: .8rem; color: var(--muted); margin-top: .55rem; }
+    table { width: 100%; border-collapse: collapse; margin-top: .6rem; font-size: .9rem; }
+    th, td { text-align: right; padding: .38rem .5rem; border-bottom: 1px solid var(--row); }
+    tr:last-child td { border-bottom: none; }
     th:first-child, td:first-child { text-align: left; }
-    th { color: var(--muted); font-weight: 600; font-size: .75rem; }
-    #top-airports th:nth-child(2), #top-airports td:nth-child(2) { text-align: left; color: var(--muted); }
-    #countries-card { margin-top: 1rem; }
+    th { color: var(--muted); font-weight: 600; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; }
+    #countries-card { margin-top: 1.1rem; }
     .flags { margin-top: .9rem; font-size: 1.9rem; line-height: 1.45; letter-spacing: .15em; }
     .flags .transit { opacity: .35; }
     .legend { font-size: .72rem; color: var(--muted); margin-top: .4rem; }
-    #error { color: #c0392b; }
+    #error { color: #e05252; }
   </style>
 </head>
 <body>
@@ -60,11 +90,13 @@
       <table id="by-year"><thead><tr><th>年</th><th>便数</th><th>距離 (km)</th></tr></thead><tbody></tbody></table>
     </div>
     <div class="card">
-      <h2>Top Airports</h2>
-      <table id="top-airports"><thead><tr><th>空港</th><th>都市</th><th>発着</th></tr></thead><tbody></tbody></table>
+      <h2>Airports</h2>
+      <div class="big" id="airport-count">–</div>
+      <table id="top-airports"><thead><tr><th>空港</th><th>発着</th></tr></thead><tbody></tbody></table>
     </div>
     <div class="card">
-      <h2>Top Airlines</h2>
+      <h2>Airlines</h2>
+      <div class="big" id="airline-count">–</div>
       <table id="top-airlines"><thead><tr><th>航空会社</th><th>便数</th></tr></thead><tbody></tbody></table>
     </div>
   </div>
@@ -97,12 +129,14 @@
         document.getElementById('flight-time-conv').textContent =
           `= ${days.toFixed(1)} Days / ${(days / 7).toFixed(1)} Weeks / ${(days / 30.44).toFixed(1)} Months / ${(days / 365.25).toFixed(2)} Years`;
 
+        document.getElementById('airport-count').textContent = s.airports.count;
         const airportBody = document.querySelector('#top-airports tbody');
-        for (const a of s.top_airports.slice(0, 5)) {
-          airportBody.insertAdjacentHTML('beforeend', `<tr><td><strong>${a.iata}</strong></td><td>${a.city ?? ''}</td><td>${a.count}</td></tr>`);
+        for (const a of s.airports.ranking.slice(0, 5)) {
+          airportBody.insertAdjacentHTML('beforeend', `<tr><td><strong>${a.iata}</strong></td><td>${a.count}</td></tr>`);
         }
+        document.getElementById('airline-count').textContent = s.airlines.count;
         const airlineBody = document.querySelector('#top-airlines tbody');
-        for (const a of s.top_airlines.slice(0, 5)) {
+        for (const a of s.airlines.ranking.slice(0, 5)) {
           airlineBody.insertAdjacentHTML('beforeend', `<tr><td><strong>${a.code}</strong> ${a.name ?? ''}</td><td>${a.count}</td></tr>`);
         }
 

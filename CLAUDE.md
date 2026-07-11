@@ -59,7 +59,7 @@
 }
 ```
 
-- `ops` は運航データ領域。総飛行時間の計算に使用（実離着陸→ゲート実時刻→予定時刻の優先順）。Flightyインポート時はCSVから、API登録時はAeroDataBoxレスポンスから**同じスキーマ**で埋める（新旧フライトの構造統一が目的）
+- `ops` は運航データ領域。総飛行時間の計算に使用（ゲート間基準: 実ゲート発着ペア→予定時刻→実離着陸の優先順）。Flightyインポート時はCSVから、API登録時はAeroDataBoxレスポンスから**同じスキーマ**で埋める（新旧フライトの構造統一が目的）
 - 個人記録系（PNR/座席/クラス/搭乗理由/メモ）は**保存しない**。`Flight Flighty ID` のみ重複防止キーとして `id` に流用
 - `data/airports.json`: `iata, name, city, country_code, country_name, lat, lon, tz`（OpenFlightsから生成、同梱。tzはローカル時刻→UTC換算用）
 - `data/airlines.json`: ICAO→IATA・名称解決用の航空会社マスタ（OpenFlightsから生成、同梱）
