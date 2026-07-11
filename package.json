@@ -1,0 +1,17 @@
+{
+  "name": "flight-log",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "masters": "node scripts/generate_masters.js",
+    "import": "node scripts/import_flighty.js",
+    "add": "node scripts/add_flight.js"
+  },
+  "dependencies": {
+    "csv-parse": "^5.6.0"
+  }
+}
