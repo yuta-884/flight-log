@@ -23,10 +23,12 @@
     .unit { font-size: 1rem; font-weight: 400; color: var(--muted); }
     .pair { display: flex; gap: 2rem; }
     .pair .label { font-size: .72rem; color: var(--muted); }
+    .conversions { font-size: .82rem; color: var(--muted); margin-top: .5rem; }
     table { width: 100%; border-collapse: collapse; margin-top: .25rem; font-size: .9rem; }
     th, td { text-align: right; padding: .35rem .5rem; border-bottom: 1px solid var(--border); }
     th:first-child, td:first-child { text-align: left; }
     th { color: var(--muted); font-weight: 600; font-size: .75rem; }
+    #top-airports th:nth-child(2), #top-airports td:nth-child(2) { text-align: left; color: var(--muted); }
     #countries-card { margin-top: 1rem; }
     .flags { margin-top: .9rem; font-size: 1.9rem; line-height: 1.45; letter-spacing: .15em; }
     .flags .transit { opacity: .35; }
@@ -49,8 +51,21 @@
       <div class="big" id="distance">–</div>
     </div>
     <div class="card">
+      <h2>総飛行時間</h2>
+      <div class="big" id="flight-time">–</div>
+      <div class="conversions" id="flight-time-conv"></div>
+    </div>
+    <div class="card">
       <h2>年別フライト数</h2>
       <table id="by-year"><thead><tr><th>年</th><th>便数</th><th>距離 (km)</th></tr></thead><tbody></tbody></table>
+    </div>
+    <div class="card">
+      <h2>Top Airports</h2>
+      <table id="top-airports"><thead><tr><th>空港</th><th>都市</th><th>発着</th></tr></thead><tbody></tbody></table>
+    </div>
+    <div class="card">
+      <h2>Top Airlines</h2>
+      <table id="top-airlines"><thead><tr><th>航空会社</th><th>便数</th></tr></thead><tbody></tbody></table>
     </div>
   </div>
 
@@ -74,6 +89,22 @@
       .then((s) => {
         document.getElementById('total-flights').textContent = fmt(s.total_flights);
         document.getElementById('distance').innerHTML = `${fmt(s.total_distance_km)}<span class="unit"> km</span>`;
+
+        const min = s.flight_time.total_minutes;
+        document.getElementById('flight-time').innerHTML =
+          `${fmt(Math.floor(min / 60))}<span class="unit">h</span> ${min % 60}<span class="unit">m</span>`;
+        const days = min / 1440;
+        document.getElementById('flight-time-conv').textContent =
+          `= ${days.toFixed(1)} Days / ${(days / 7).toFixed(1)} Weeks / ${(days / 30.44).toFixed(1)} Months / ${(days / 365.25).toFixed(2)} Years`;
+
+        const airportBody = document.querySelector('#top-airports tbody');
+        for (const a of s.top_airports.slice(0, 5)) {
+          airportBody.insertAdjacentHTML('beforeend', `<tr><td><strong>${a.iata}</strong></td><td>${a.city ?? ''}</td><td>${a.count}</td></tr>`);
+        }
+        const airlineBody = document.querySelector('#top-airlines tbody');
+        for (const a of s.top_airlines.slice(0, 5)) {
+          airlineBody.insertAdjacentHTML('beforeend', `<tr><td><strong>${a.code}</strong> ${a.name ?? ''}</td><td>${a.count}</td></tr>`);
+        }
 
         const yearBody = document.querySelector('#by-year tbody');
         for (const [year, v] of Object.entries(s.flights_by_year).sort((a, b) => b[0].localeCompare(a[0]))) {

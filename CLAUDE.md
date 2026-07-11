@@ -59,10 +59,11 @@
 }
 ```
 
-- `ops` は拡張領域。現行統計は参照しない。Flightyインポート時はCSVから、API登録時はAeroDataBoxレスポンスから**同じスキーマ**で埋める（新旧フライトの構造統一が目的）
+- `ops` は運航データ領域。総飛行時間の計算に使用（実離着陸→ゲート実時刻→予定時刻の優先順）。Flightyインポート時はCSVから、API登録時はAeroDataBoxレスポンスから**同じスキーマ**で埋める（新旧フライトの構造統一が目的）
 - 個人記録系（PNR/座席/クラス/搭乗理由/メモ）は**保存しない**。`Flight Flighty ID` のみ重複防止キーとして `id` に流用
-- `data/airports.json`: `iata, name, city, country_code, country_name, lat, lon`（OpenFlightsから生成、同梱）
+- `data/airports.json`: `iata, name, city, country_code, country_name, lat, lon, tz`（OpenFlightsから生成、同梱。tzはローカル時刻→UTC換算用）
 - `data/airlines.json`: ICAO→IATA・名称解決用の航空会社マスタ（OpenFlightsから生成、同梱）
+- OpenFlightsの欠落・誤りは `data/airline_overrides.json` / `data/airport_overrides.json`（手動メンテ）でgenerate_masters.jsがパッチする
 - `stats.json`: `build_stats.js` がビルド時（deploy.yml）に生成、**コミットしない**（gitignore済み）。サイト・埋め込みカードはこれだけを読む。ローカルプレビューは `node scripts/build_stats.js site/data/stats.json`（site/data/ もgitignore済み）
 
 ## 外部API（AeroDataBox / RapidAPI）

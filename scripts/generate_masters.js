@@ -53,7 +53,7 @@ const airports = [];
 const seenIata = new Set();
 let missingIso = 0;
 for (const row of airportRows) {
-  const [, name, city, country, iata, , lat, lon] = row;
+  const [, name, city, country, iata, , lat, lon, , , , tz] = row;
   if (!iata || !/^[A-Z]{3}$/.test(iata) || seenIata.has(iata)) continue;
   const country_code = countryToIso.get(country) ?? null;
   if (!country_code) missingIso++;
@@ -66,7 +66,15 @@ for (const row of airportRows) {
     country_name: country,
     lat: num(lat),
     lon: num(lon),
+    tz: tz ?? null, // tz database名（例: Asia/Tokyo）。ナイーブなローカル時刻のUTC換算用
   });
+}
+// OpenFlightsで欠落・不正なフィールドの手動パッチ（IATA一致でフィールド単位マージ）
+const airportOverrides = JSON.parse(readFileSync(join(DATA_DIR, 'airport_overrides.json'), 'utf8'));
+for (const o of airportOverrides) {
+  const target = airports.find((a) => a.iata === o.iata);
+  if (target) Object.assign(target, o);
+  else airports.push(o);
 }
 airports.sort((a, b) => a.iata.localeCompare(b.iata));
 

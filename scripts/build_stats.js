@@ -87,6 +87,72 @@ for (let i = 0; i < flights.length; i++) {
   stays.push({ iata: dest, country: countryOf(dest), layover: isLayoverStay(f, next) });
 }
 
+// 総飛行時間: 実離着陸 → ゲート実時刻 → 予定時刻 の順で使えるペアを採用し、
+// 空港マスタのtz database名でナイーブなローカル時刻をUTCに換算して差を取る
+const tzCache = new Map();
+function localToUtcMs(naive, tz) {
+  let dtf = tzCache.get(tz);
+  if (!dtf) {
+    dtf = new Intl.DateTimeFormat('en-US', {
+      timeZone: tz, hour12: false,
+      year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit',
+    });
+    tzCache.set(tz, dtf);
+  }
+  const guess = Date.parse(`${naive}:00Z`);
+  const p = Object.fromEntries(dtf.formatToParts(new Date(guess)).map((x) => [x.type, x.value]));
+  const offset = Date.UTC(p.year, p.month - 1, p.day, p.hour % 24, p.minute) - guess;
+  return guess - offset; // DST境界±1時間の誤差は統計用途では無視できる
+}
+
+function flightMinutes(f) {
+  const oTz = airports.get(f.origin_iata)?.tz;
+  const dTz = airports.get(effDest(f))?.tz;
+  if (!oTz || !dTz) {
+    warnings.push(`${f.flight_number} ${f.flight_date}: 空港tzが不明で飛行時間を計算できません`);
+    return null;
+  }
+  const pairs = [
+    [f.ops?.actual_takeoff, f.ops?.actual_landing],
+    [f.ops?.actual_gate_departure, f.ops?.actual_gate_arrival],
+    [f.scheduled_departure, f.scheduled_arrival],
+  ];
+  for (const [dep, arr] of pairs) {
+    if (!dep || !arr) continue;
+    const min = Math.round((localToUtcMs(arr, dTz) - localToUtcMs(dep, oTz)) / 60000);
+    if (min > 0 && min < 20 * 60) return min; // 不正値（負・20時間超）は次の候補へ
+  }
+  warnings.push(`${f.flight_number} ${f.flight_date}: 有効な時刻ペアがなく飛行時間から除外`);
+  return null;
+}
+
+let totalFlightMinutes = 0;
+let flightTimeCounted = 0;
+for (const f of flights) {
+  const min = flightMinutes(f);
+  if (min !== null) {
+    totalFlightMinutes += min;
+    flightTimeCounted++;
+  }
+}
+
+// Top Airports（発着それぞれ1カウント、実効到着地ベース）/ Top Airlines（便数）
+const airportCounts = new Map();
+const airlineCounts = new Map();
+for (const f of flights) {
+  for (const iata of [f.origin_iata, effDest(f)]) {
+    const cur = airportCounts.get(iata) ?? { iata, city: airports.get(iata)?.city ?? null, count: 0 };
+    cur.count++;
+    airportCounts.set(iata, cur);
+  }
+  const key = f.airline_code;
+  const cur = airlineCounts.get(key) ?? { code: key, name: f.airline_name, count: 0 };
+  cur.count++;
+  airlineCounts.set(key, cur);
+}
+const topAirports = [...airportCounts.values()].sort((a, b) => b.count - a.count || a.iata.localeCompare(b.iata));
+const topAirlines = [...airlineCounts.values()].sort((a, b) => b.count - a.count || a.code.localeCompare(b.code));
+
 // 国別の滞在回数（乗り継ぎ含む／除く）
 function countryVisits(includeLayovers) {
   const visits = new Map(); // code -> { code, name, visits }
@@ -125,6 +191,12 @@ const stats = {
     excluding_layovers: { count: visitsExcl.length, visits: visitsExcl },
   },
   total_distance_km: totalDistance,
+  flight_time: {
+    total_minutes: totalFlightMinutes,
+    flights_counted: flightTimeCounted, // 時刻データがあり集計に入った便数
+  },
+  top_airports: topAirports,
+  top_airlines: topAirlines,
 };
 
 writeFileSync(outPath, JSON.stringify(stats, null, 2) + '\n');
@@ -132,4 +204,6 @@ writeFileSync(outPath, JSON.stringify(stats, null, 2) + '\n');
 console.log(`stats.json generated: ${outPath}`);
 console.log(`  flights: ${stats.total_flights}, distance: ${totalDistance} km`);
 console.log(`  countries: incl=${visitsIncl.length}, excl=${visitsExcl.length}`);
+console.log(`  flight time: ${Math.floor(totalFlightMinutes / 60)}h ${totalFlightMinutes % 60}m (${flightTimeCounted}/${flights.length} flights)`);
+console.log(`  top airport: ${topAirports[0]?.iata}(${topAirports[0]?.count}), top airline: ${topAirlines[0]?.code}(${topAirlines[0]?.count})`);
 for (const w of warnings) console.warn(`WARN: ${w}`);
