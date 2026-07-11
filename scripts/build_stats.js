@@ -142,26 +142,29 @@ for (const f of flights) {
   }
 }
 
-// 空港別タッチ数（発着それぞれ1カウント、実効到着地ベース）。
-// ただし同一空港・閾値内の接続（乗り継ぎ）は物理的には1回の立ち寄りなので
-// 1タッチに集約する（Flightyの空港カウントと同基準）/ 航空会社別は便数
-const airportCounts = new Map();
+// 空港別タッチ数: 発着（実効到着地ベース）をそれぞれ1タッチとし、
+// 同一空港・同一ローカル日付のタッチは1カウントに集約する（Flightyと同基準。
+// 同日乗り継ぎのBKKは1、日跨ぎ滞在のKIXは2、と実測で確認済み）。
+// 出発タッチの日付=flight_date、到着タッチの日付=到着時刻の日付（なければflight_date）
+const airportDays = new Map(); // iata -> Set<日付>
 const airlineCounts = new Map();
 for (const f of flights) {
-  for (const iata of [f.origin_iata, effDest(f)]) {
-    const cur = airportCounts.get(iata) ?? { iata, count: 0 };
-    cur.count++;
-    airportCounts.set(iata, cur);
+  const touches = [
+    [f.origin_iata, f.flight_date],
+    [effDest(f), (f.scheduled_arrival ?? f.flight_date).slice(0, 10)],
+  ];
+  for (const [iata, date] of touches) {
+    if (!airportDays.has(iata)) airportDays.set(iata, new Set());
+    airportDays.get(iata).add(date);
   }
   const key = f.airline_code;
   const cur = airlineCounts.get(key) ?? { code: key, name: f.airline_name, count: 0 };
   cur.count++;
   airlineCounts.set(key, cur);
 }
-for (let i = 0; i < flights.length - 1; i++) {
-  if (isConnection(flights[i], flights[i + 1])) airportCounts.get(effDest(flights[i])).count--;
-}
-const airportRanking = [...airportCounts.values()].sort((a, b) => b.count - a.count || a.iata.localeCompare(b.iata));
+const airportRanking = [...airportDays.entries()]
+  .map(([iata, days]) => ({ iata, count: days.size }))
+  .sort((a, b) => b.count - a.count || a.iata.localeCompare(b.iata));
 const airlineRanking = [...airlineCounts.values()].sort((a, b) => b.count - a.count || a.code.localeCompare(b.code));
 
 // 国別の滞在回数（乗り継ぎ含む／除く）
