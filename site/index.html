@@ -56,7 +56,11 @@
     .unit { font-size: 1rem; font-weight: 500; }
     .pair { display: flex; gap: 2rem; }
     .pair .label { font-size: .72rem; color: var(--muted); }
-    .conversions { font-size: .8rem; color: var(--muted); margin-top: .55rem; }
+    .conversions {
+      font-size: .8rem; color: var(--muted); margin-top: .55rem;
+      display: grid; grid-template-columns: repeat(2, minmax(0, max-content));
+      gap: .2rem 2rem;
+    }
     table { width: 100%; border-collapse: collapse; margin-top: .6rem; font-size: .9rem; }
     th, td { text-align: right; padding: .38rem .5rem; border-bottom: 1px solid var(--row); }
     tr:last-child td { border-bottom: none; }
@@ -155,7 +159,7 @@
         .pointLat((a) => a.lat).pointLng((a) => a.lon)
         .pointColor(() => accent2)
         .pointAltitude(0.005)
-        .pointRadius((a) => 0.12 + Math.min(a.count, 40) * 0.008)
+        .pointRadius((a) => 0.2 + Math.min(a.count, 40) * 0.012)
         .pointLabel((a) => `${a.iata}（発着 ${a.count}）`)
         // 発着記録のある空港ごとに1つだけIATAスリーレターを常時表示
         // （globe.airportsは空港単位で集約済みなので重複しない）
@@ -166,7 +170,9 @@
         .labelColor(() => accent2)
         .labelDotRadius(0) // ドットはpointsレイヤーが担当
         .labelAltitude(0.008)
-        .labelResolution(2);
+        .labelResolution(2)
+        .labelLabel((a) => `${a.iata}（発着 ${a.count}）`); // ラベル文字へのホバーでツールチップ
+      window.flightGlobe = globe; // デバッグ・検証用
       const mat = globe.globeMaterial();
       mat.color.set('#0c1122');
       globe.controls().autoRotate = true;
@@ -196,8 +202,12 @@
         document.getElementById('flight-time').innerHTML =
           `${fmt(Math.floor(min / 60))}<span class="unit">h</span> ${min % 60}<span class="unit">m</span>`;
         const days = min / 1440;
-        document.getElementById('flight-time-conv').textContent =
-          `= ${days.toFixed(1)} Days / ${(days / 7).toFixed(1)} Weeks / ${(days / 30.44).toFixed(1)} Months / ${(days / 365.25).toFixed(2)} Years`;
+        document.getElementById('flight-time-conv').innerHTML = [
+          `${days.toFixed(1)} Days`,
+          `${(days / 7).toFixed(1)} Weeks`,
+          `${(days / 30.44).toFixed(1)} Months`,
+          `${(days / 365.25).toFixed(2)} Years`,
+        ].map((t) => `<span>${t}</span>`).join('');
 
         document.getElementById('airport-count').textContent = s.airports.count;
         const airportBody = document.querySelector('#top-airports tbody');
