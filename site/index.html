@@ -71,6 +71,17 @@
     #globe { height: 30rem; cursor: grab; }
     #globe:active { cursor: grabbing; }
     @media (max-width: 44rem) { #globe { height: 22rem; } }
+    #globe .scene-tooltip {
+      color: var(--accent2);
+      background: var(--card);
+      padding: .3rem .65rem;
+      border-radius: .5rem;
+      font-family: system-ui, sans-serif;
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, .35);
+    }
     .flags { margin-top: .9rem; font-size: 1.9rem; line-height: 1.45; letter-spacing: .15em; }
     .flags .transit { opacity: .35; }
     .legend { font-size: .72rem; color: var(--muted); margin-top: .4rem; }
@@ -159,9 +170,11 @@
         .pointLat((a) => a.lat).pointLng((a) => a.lon)
         .pointColor(() => accent2)
         .pointAltitude(0.005)
-        .pointRadius((a) => 0.2 + Math.min(a.count, 40) * 0.012)
+        .pointRadius((a) => 0.35 + Math.min(a.count, 40) * 0.015)
         // 常時表示のラベルは置かず、空港ドットへのホバーでスリーレターのみ表示
-        .pointLabel((a) => a.iata);
+        .pointLabel((a) => a.iata)
+        // ホバー中は自動回転を止める（回転でホバーが勝手に外れるのを防ぐ）
+        .onPointHover((p) => { globe.controls().autoRotate = !p; });
       window.flightGlobe = globe; // デバッグ・検証用
       const mat = globe.globeMaterial();
       mat.color.set('#0c1122');
