@@ -156,7 +156,17 @@
         .pointColor(() => accent2)
         .pointAltitude(0.005)
         .pointRadius((a) => 0.12 + Math.min(a.count, 40) * 0.008)
-        .pointLabel((a) => `${a.iata}（発着 ${a.count}）`);
+        .pointLabel((a) => `${a.iata}（発着 ${a.count}）`)
+        // 発着記録のある空港ごとに1つだけIATAスリーレターを常時表示
+        // （globe.airportsは空港単位で集約済みなので重複しない）
+        .labelsData(globeData.airports)
+        .labelLat((a) => a.lat).labelLng((a) => a.lon)
+        .labelText((a) => a.iata)
+        .labelSize(0.9)
+        .labelColor(() => accent2)
+        .labelDotRadius(0) // ドットはpointsレイヤーが担当
+        .labelAltitude(0.008)
+        .labelResolution(2);
       const mat = globe.globeMaterial();
       mat.color.set('#0c1122');
       globe.controls().autoRotate = true;
