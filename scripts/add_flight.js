@@ -134,6 +134,12 @@ if (manual) {
   let legs = await res.json();
   if (!Array.isArray(legs)) legs = [legs];
   legs = legs.filter((l) => l?.departure?.airport?.iata && l?.arrival?.airport?.iata);
+
+  // AeroDataBoxは指定日に「出発する便」と「到着する便」の両方を返す
+  // （深夜便では前日発の便が混ざる）。正準日付＝出発地ローカルの出発日なので、
+  // 出発ローカル日付が一致する区間に絞る。時刻不明の区間しか無い場合はそのまま残す
+  const sameDay = legs.filter((l) => normalizeLocalTime(l.departure.scheduledTime?.local)?.startsWith(date));
+  if (sameDay.length > 0) legs = sameDay;
   if (legs.length === 0) {
     fail(`AeroDataBoxのレスポンスに有効な区間がありません。--manual での登録を検討してください`);
   }
