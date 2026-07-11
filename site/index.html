@@ -29,7 +29,10 @@
     }
     h1 { font-size: 1.5rem; margin: 0 0 .25rem; letter-spacing: .02em; }
     .sub { color: var(--muted); font-size: .8rem; margin-bottom: 2rem; }
-    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1.1rem; }
+    .cards { display: grid; gap: 1.1rem; margin-top: 1.1rem; }
+    .cards.two { grid-template-columns: repeat(2, 1fr); }
+    .cards.three { grid-template-columns: repeat(3, 1fr); }
+    @media (max-width: 44rem) { .cards.two, .cards.three { grid-template-columns: 1fr; } }
     .card {
       position: relative; border: none; border-radius: 1.1rem; padding: 1.2rem 1.35rem;
       background:
@@ -71,33 +74,34 @@
   <p class="sub" id="updated">読み込み中…</p>
   <p id="error" hidden>stats.json を読み込めませんでした。</p>
 
-  <div class="cards" id="cards" hidden>
-    <div class="card">
-      <h2>合計フライト数</h2>
-      <div class="big" id="total-flights">–</div>
+  <div id="cards" hidden>
+    <div class="cards two">
+      <div class="card">
+        <h2>総移動距離</h2>
+        <div class="big" id="distance">–</div>
+      </div>
+      <div class="card">
+        <h2>総飛行時間</h2>
+        <div class="big" id="flight-time">–</div>
+        <div class="conversions" id="flight-time-conv"></div>
+      </div>
     </div>
-    <div class="card">
-      <h2>総移動距離</h2>
-      <div class="big" id="distance">–</div>
-    </div>
-    <div class="card">
-      <h2>総飛行時間</h2>
-      <div class="big" id="flight-time">–</div>
-      <div class="conversions" id="flight-time-conv"></div>
-    </div>
-    <div class="card">
-      <h2>年別フライト数</h2>
-      <table id="by-year"><thead><tr><th>年</th><th>便数</th><th>距離 (km)</th></tr></thead><tbody></tbody></table>
-    </div>
-    <div class="card">
-      <h2>Airports</h2>
-      <div class="big" id="airport-count">–</div>
-      <table id="top-airports"><thead><tr><th>空港</th><th>発着</th></tr></thead><tbody></tbody></table>
-    </div>
-    <div class="card">
-      <h2>Airlines</h2>
-      <div class="big" id="airline-count">–</div>
-      <table id="top-airlines"><thead><tr><th>航空会社</th><th>便数</th></tr></thead><tbody></tbody></table>
+    <div class="cards three">
+      <div class="card">
+        <h2>Flights</h2>
+        <div class="big" id="total-flights">–</div>
+        <table id="by-year"><thead><tr><th>年</th><th>便数</th><th>距離 (km)</th></tr></thead><tbody></tbody></table>
+      </div>
+      <div class="card">
+        <h2>Airports</h2>
+        <div class="big" id="airport-count">–</div>
+        <table id="top-airports"><thead><tr><th>空港</th><th>発着</th></tr></thead><tbody></tbody></table>
+      </div>
+      <div class="card">
+        <h2>Airlines</h2>
+        <div class="big" id="airline-count">–</div>
+        <table id="top-airlines"><thead><tr><th>航空会社</th><th>便数</th></tr></thead><tbody></tbody></table>
+      </div>
     </div>
   </div>
 
