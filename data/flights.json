@@ -2660,6 +2660,34 @@
     }
   },
   {
+    "id": "2026-07-09-ZG51",
+    "flight_number": "ZG51",
+    "flight_date": "2026-07-09",
+    "airline_code": "ZG",
+    "airline_name": "ZIPAIR Tokyo",
+    "origin_iata": "NRT",
+    "destination_iata": "BKK",
+    "diverted_to_iata": null,
+    "canceled": false,
+    "scheduled_departure": "2026-07-09T17:00",
+    "scheduled_arrival": "2026-07-09T21:40",
+    "distance_km": 4649,
+    "layover": null,
+    "source": "api",
+    "ops": {
+      "dep_terminal": "1N",
+      "dep_gate": "14",
+      "arr_terminal": null,
+      "arr_gate": "E3",
+      "aircraft_type": "Boeing 787-8",
+      "tail_number": "JA822J",
+      "actual_gate_departure": "2026-07-09T17:08",
+      "actual_takeoff": "2026-07-09T17:22",
+      "actual_landing": "2026-07-09T20:56",
+      "actual_gate_arrival": "2026-07-09T21:06"
+    }
+  },
+  {
     "id": "2026-07-10-ZG51",
     "flight_number": "ZG51",
     "flight_date": "2026-07-10",
