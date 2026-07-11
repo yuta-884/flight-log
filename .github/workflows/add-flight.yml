@@ -1,0 +1,69 @@
+# GitHubモバイルアプリからのフライト登録用（仕様書§4の登録フロー）
+# Actions → Add flight → Run workflow → 便名と出発日を入力
+name: Add flight
+
+on:
+  workflow_dispatch:
+    inputs:
+      flight_number:
+        description: '便名 (例: ZG51)'
+        required: true
+      flight_date:
+        description: '出発日 YYYY-MM-DD (出発地ローカル)'
+        required: true
+      origin:
+        description: '出発空港IATA (通常は空欄。--from区間指定 or 手入力時)'
+        required: false
+      destination:
+        description: '到着空港IATA (空欄=API解決。指定すると手入力モードでAPIを呼ばない)'
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: flights-json
+  cancel-in-progress: false
+
+jobs:
+  add-flight:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Add flight
+        env:
+          AERODATABOX_API_KEY: ${{ secrets.AERODATABOX_API_KEY }}
+          FLIGHT_NUMBER: ${{ inputs.flight_number }}
+          FLIGHT_DATE: ${{ inputs.flight_date }}
+          ORIGIN: ${{ inputs.origin }}
+          DESTINATION: ${{ inputs.destination }}
+        run: |
+          if [ -n "$DESTINATION" ]; then
+            # 手入力モード（到着空港まで指定された場合。APIは呼ばない）
+            node scripts/add_flight.js --manual "$FLIGHT_NUMBER" "$ORIGIN" "$DESTINATION" "$FLIGHT_DATE"
+          elif [ -n "$ORIGIN" ]; then
+            # 複数区間の出発地指定つきAPI解決
+            node scripts/add_flight.js "$FLIGHT_NUMBER" "$FLIGHT_DATE" --from "$ORIGIN"
+          else
+            node scripts/add_flight.js "$FLIGHT_NUMBER" "$FLIGHT_DATE"
+          fi
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/flights.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Add flight ${{ inputs.flight_number }} on ${{ inputs.flight_date }}"
+            git push
+          fi
