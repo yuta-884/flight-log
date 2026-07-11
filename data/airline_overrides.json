@@ -1,0 +1,11 @@
+[
+  { "icao": "TZP", "iata": "ZG", "name": "ZIPAIR Tokyo", "active": true },
+  { "icao": "ITY", "iata": "AZ", "name": "ITA Airways", "active": true },
+  { "icao": "APJ", "iata": "MM", "name": "Peach Aviation", "active": true },
+  { "icao": "JJP", "iata": "GK", "name": "Jetstar Japan", "active": true },
+  { "icao": "TAX", "iata": "XJ", "name": "Thai AirAsia X", "active": true },
+  { "icao": "TLM", "iata": "SL", "name": "Thai Lion Air", "active": true },
+  { "icao": "TGW", "iata": "TR", "name": "Scoot", "active": true },
+  { "icao": "VAG", "iata": "VU", "name": "Vietravel Airlines", "active": true },
+  { "icao": "VJC", "iata": "VJ", "name": "VietJet Air", "active": true }
+]
