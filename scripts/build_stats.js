@@ -6,6 +6,8 @@
 //
 // 集計ルール:
 // - canceled=true の便は全統計から除外（レコードは保持されるが飛んでいない）
+// - 未来の便（flight_dateが集計日より後）も全統計から除外。予定便は保持され、
+//   出発日到来後の再ビルドで自動算入。出発日当日は搭乗済み扱い（Flightyと同基準）
 // - diverted_to_iata があれば距離・国カウントの実効到着地として使う
 // - 「滞在」モデルで国をカウントする: 最初の便の出発地、各便の実効到着地、
 //   および前便の到着地と不一致の出発地（陸路移動）をそれぞれ1滞在とする。
@@ -28,9 +30,10 @@ const outPath = process.argv[2] ?? join(DATA_DIR, 'stats.json');
 const airports = loadAirports();
 const warnings = [];
 
-// 時系列に並べた有効（非キャンセル）便
+// 時系列に並べた有効な便（キャンセルと未来の便を除く）
+const today = new Date().toISOString().slice(0, 10);
 const flights = loadFlights()
-  .filter((f) => !f.canceled)
+  .filter((f) => !f.canceled && f.flight_date <= today)
   .sort(
     (a, b) =>
       a.flight_date.localeCompare(b.flight_date) ||
@@ -113,6 +116,7 @@ const totalDistance = Object.values(byYear).reduce((s, y) => s + y.distance_km, 
 
 const stats = {
   generated_at: new Date().toISOString(),
+  counted_through: today, // この日以前の出発便のみ集計対象
   layover_threshold_hours: LAYOVER_THRESHOLD_HOURS,
   total_flights: flights.length,
   flights_by_year: byYear,
