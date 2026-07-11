@@ -182,6 +182,36 @@ function countryVisits(includeLayovers) {
 const visitsIncl = countryVisits(true);
 const visitsExcl = countryVisits(false);
 
+// 地球儀用データ: 空港座標を焼き込んだルート（無向で集約）と空港ポイント。
+// サイトがstats.json以外を読まずに描画できるようにする（API・外部データ非依存）
+const routeMap = new Map();
+for (const f of flights) {
+  const [a, b] = [f.origin_iata, effDest(f)].sort();
+  const key = `${a}-${b}`;
+  const cur = routeMap.get(key);
+  if (cur) {
+    cur.count++;
+    continue;
+  }
+  const o = airports.get(f.origin_iata);
+  const d = airports.get(effDest(f));
+  if (!o || !d || o.lat == null || d.lat == null) {
+    warnings.push(`${f.origin_iata}→${effDest(f)}: 座標がなく地球儀ルートから除外`);
+    continue;
+  }
+  routeMap.set(key, {
+    from: { iata: f.origin_iata, lat: o.lat, lon: o.lon },
+    to: { iata: effDest(f), lat: d.lat, lon: d.lon },
+    count: 1,
+  });
+}
+const globeAirports = airportRanking
+  .map(({ iata, count }) => {
+    const a = airports.get(iata);
+    return a?.lat != null ? { iata, lat: a.lat, lon: a.lon, count } : null;
+  })
+  .filter(Boolean);
+
 // 年別内訳（年＝出発地ローカル出発日の年）
 const byYear = {};
 for (const f of flights) {
@@ -211,6 +241,7 @@ const stats = {
   },
   airports: { count: airportRanking.length, ranking: airportRanking },
   airlines: { count: airlineRanking.length, ranking: airlineRanking },
+  globe: { airports: globeAirports, routes: [...routeMap.values()] },
 };
 
 writeFileSync(outPath, JSON.stringify(stats, null, 2) + '\n');
@@ -220,4 +251,5 @@ console.log(`  flights: ${stats.total_flights}, distance: ${totalDistance} km`);
 console.log(`  countries: incl=${visitsIncl.length}, excl=${visitsExcl.length}`);
 console.log(`  flight time: ${Math.floor(totalFlightMinutes / 60)}h ${totalFlightMinutes % 60}m (${flightTimeCounted}/${flights.length} flights)`);
 console.log(`  airports: ${airportRanking.length} (top ${airportRanking[0]?.iata}:${airportRanking[0]?.count}), airlines: ${airlineRanking.length} (top ${airlineRanking[0]?.code}:${airlineRanking[0]?.count})`);
+console.log(`  globe: ${routeMap.size} routes, ${globeAirports.length} airports`);
 for (const w of warnings) console.warn(`WARN: ${w}`);

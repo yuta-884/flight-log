@@ -110,7 +110,7 @@
 |---|---|---|
 | Phase 1 | データモデル、マスタ生成、`import_flighty.js`、`add_flight.js`、workflow_dispatch登録、Pagesデプロイ骨格 | **完了** |
 | Phase 2 | `build_stats.js` と統計ページ（フライト数・移動距離・行った国＋国旗、通算・年別、乗り継ぎ含む/除く） | **完了** |
-| Phase 3 | 地球儀ビュー（globe.gl、大圏アーク描画） | 未着手 |
+| Phase 3 | 地球儀ビュー（globe.gl、大圏アーク描画。バンドル・国境GeoJSONは site/vendor/ に同梱、データは stats.json の globe フィールド） | **完了** |
 | Phase 4 | 埋め込みカード `/embed/stats.html`（Ghostブログへiframe埋め込み） | 未着手 |
 
 登録フロー（スマホ運用）: GitHubモバイルアプリ → Actions → add-flight → Run workflow → 便名と日付を入力 → ActionがAPI解決してコミット → Pagesが自動再ビルド。

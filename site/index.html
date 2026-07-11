@@ -63,6 +63,10 @@
     th:first-child, td:first-child { text-align: left; }
     th { color: var(--muted); font-weight: 600; font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; }
     #countries-card { margin-top: 1.1rem; }
+    #globe-card { margin-top: 1.1rem; padding: 0; }
+    #globe { height: 30rem; cursor: grab; }
+    #globe:active { cursor: grabbing; }
+    @media (max-width: 44rem) { #globe { height: 22rem; } }
     .flags { margin-top: .9rem; font-size: 1.9rem; line-height: 1.45; letter-spacing: .15em; }
     .flags .transit { opacity: .35; }
     .legend { font-size: .72rem; color: var(--muted); margin-top: .4rem; }
@@ -73,6 +77,10 @@
   <h1>✈️ flight-log</h1>
   <p class="sub" id="updated">読み込み中…</p>
   <p id="error" hidden>stats.json を読み込めませんでした。</p>
+
+  <div class="card" id="globe-card" hidden>
+    <div id="globe"></div>
+  </div>
 
   <div id="cards" hidden>
     <div class="cards two">
@@ -115,9 +123,57 @@
     <div class="legend">薄い国旗は乗り継ぎのみ</div>
   </div>
 
+  <script src="vendor/globe.gl.min.js"></script>
   <script>
     // 表示は集計済みJSONのみを読む（API非依存の設計原則）。stats.jsonはデプロイ時に生成される
     const fmt = (n) => n.toLocaleString('ja-JP');
+
+    // 地球儀（globe.gl）: 全ルートを大圏アークで描画。陸地は同梱GeoJSONの六角形表現
+    // （テクスチャ・CDN不使用でオフライン動作）。ドラッグ/タッチで回転、自動回転つき
+    function initGlobe(globeData) {
+      if (typeof Globe !== 'function') return; // vendorバンドル未読込時は地球儀なしで続行
+      const el = document.getElementById('globe');
+      document.getElementById('globe-card').hidden = false;
+      const accent = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+      const accent2 = getComputedStyle(document.documentElement).getPropertyValue('--accent2').trim();
+      const globe = new Globe(el)
+        .width(el.clientWidth)
+        .height(el.clientHeight)
+        .backgroundColor('rgba(0,0,0,0)')
+        .showGlobe(true)
+        .showAtmosphere(true)
+        .atmosphereColor(accent)
+        .atmosphereAltitude(0.18)
+        .arcsData(globeData.routes)
+        .arcStartLat((r) => r.from.lat).arcStartLng((r) => r.from.lon)
+        .arcEndLat((r) => r.to.lat).arcEndLng((r) => r.to.lon)
+        .arcColor(() => [accent, accent2])
+        .arcStroke((r) => 0.25 + Math.min(r.count, 8) * 0.06)
+        .arcAltitudeAutoScale(0.35)
+        .arcsTransitionDuration(0)
+        .pointsData(globeData.airports)
+        .pointLat((a) => a.lat).pointLng((a) => a.lon)
+        .pointColor(() => accent2)
+        .pointAltitude(0.005)
+        .pointRadius((a) => 0.12 + Math.min(a.count, 40) * 0.008)
+        .pointLabel((a) => `${a.iata}（発着 ${a.count}）`);
+      const mat = globe.globeMaterial();
+      mat.color.set('#0c1122');
+      globe.controls().autoRotate = true;
+      globe.controls().autoRotateSpeed = 0.6;
+      globe.pointOfView({ lat: 25, lng: 120, altitude: 1.9 });
+      fetch('vendor/countries.geojson')
+        .then((r) => r.json())
+        .then((geo) => {
+          globe
+            .hexPolygonsData(geo.features)
+            .hexPolygonResolution(3)
+            .hexPolygonMargin(0.6)
+            .hexPolygonColor(() => 'rgba(111, 150, 255, 0.32)');
+        })
+        .catch(() => {}); // 陸地なしでもアークは描ける
+      addEventListener('resize', () => globe.width(el.clientWidth).height(el.clientHeight));
+    }
     // ISO 3166-1 alpha-2 → 絵文字国旗（Regional Indicator Symbols）
     const flagOf = (cc) => String.fromCodePoint(...[...cc].map((c) => 0x1f1e6 + c.charCodeAt(0) - 65));
     fetch('data/stats.json')
@@ -162,6 +218,7 @@
         document.getElementById('updated').textContent = `最終集計: ${new Date(s.generated_at).toLocaleString('ja-JP')}`;
         document.getElementById('cards').hidden = false;
         document.getElementById('countries-card').hidden = false;
+        if (s.globe) initGlobe(s.globe);
       })
       .catch(() => {
         document.getElementById('updated').hidden = true;
