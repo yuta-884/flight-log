@@ -1,3 +1,7 @@
 node_modules/
 .DS_Store
 *.log
+
+# ビルド時生成物（deploy.ymlが生成。ローカルプレビュー用のsite/data/も含む）
+data/stats.json
+site/data/

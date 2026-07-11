@@ -1,5 +1,4 @@
-# main更新でGitHub Pagesへデプロイ
-# Phase 1はプレースホルダーページのみ。Phase 2でstats生成ステップを追加予定
+# main更新でGitHub Pagesへデプロイ（stats.jsonをビルド時に生成）
 name: Deploy to GitHub Pages
 
 on:
@@ -28,6 +27,9 @@ jobs:
           cp -r site/. _site/
           cp data/flights.json _site/data/
           cp data/airports.json _site/data/
+
+      - name: Build stats
+        run: node scripts/build_stats.js _site/data/stats.json
 
       - uses: actions/upload-pages-artifact@v3
         with:

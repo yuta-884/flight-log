@@ -23,6 +23,11 @@
 
 **乗り継ぎ自動判定ロジック**: フライトNの到着空港 = フライトN+1の出発空港（空港コードの**厳密一致**）かつ間隔が閾値（デフォルト24時間）以内なら、中間空港の国を「乗り継ぎ」とみなす。フライトごとに `layover: true/false` で手動オーバーライド可（`null` = 自動判定）。同一都市・別空港（SAW→IST等）は意図的に乗り継ぎ扱いに**しない**（地上移動=入国の近似）。同一都市判定への拡張は行わない。
 
+実装上の決定（build_stats.js）:
+- フライトNの `layover` フラグは「**Nの到着後の滞在**」を指す（例: 米国入国を訪問扱いにするなら米国行きの便に `layover: false`）
+- 24時間ギャップは同一空港＝同一TZ同士の比較なので、ナイーブなローカル時刻の差で正確に計算できる。時刻欠損時は flight_date の差が1日以内なら乗り継ぎ扱い
+- 国のカウントは「滞在」単位（便の端点ごとに数えると往復で二重計上になるため）。最初の便の出発地・各便の実効到着地・陸路不連続の出発地がそれぞれ1滞在
+
 ## データモデル（flights.json の1レコード）
 
 ```jsonc
@@ -57,7 +62,7 @@
 - 個人記録系（PNR/座席/クラス/搭乗理由/メモ）は**保存しない**。`Flight Flighty ID` のみ重複防止キーとして `id` に流用
 - `data/airports.json`: `iata, name, city, country_code, country_name, lat, lon`（OpenFlightsから生成、同梱）
 - `data/airlines.json`: ICAO→IATA・名称解決用の航空会社マスタ（OpenFlightsから生成、同梱）
-- `stats.json`: Phase 2で `build_stats.js` がビルド時に生成。サイト・埋め込みカードはこれだけを読む
+- `stats.json`: `build_stats.js` がビルド時（deploy.yml）に生成、**コミットしない**（gitignore済み）。サイト・埋め込みカードはこれだけを読む。ローカルプレビューは `node scripts/build_stats.js site/data/stats.json`（site/data/ もgitignore済み）
 
 ## 外部API（AeroDataBox / RapidAPI）
 
@@ -101,8 +106,8 @@
 
 | フェーズ | 内容 | 状態 |
 |---|---|---|
-| Phase 1 | データモデル、マスタ生成、`import_flighty.js`、`add_flight.js`、workflow_dispatch登録、Pagesデプロイ骨格 | 実装中 |
-| Phase 2 | `build_stats.js` と統計ページ（5項目、通算・年別、乗り継ぎ含む/除く） | 未着手 |
+| Phase 1 | データモデル、マスタ生成、`import_flighty.js`、`add_flight.js`、workflow_dispatch登録、Pagesデプロイ骨格 | **完了** |
+| Phase 2 | `build_stats.js` と統計ページ（フライト数・移動距離・行った国＋国旗、通算・年別、乗り継ぎ含む/除く） | **完了** |
 | Phase 3 | 地球儀ビュー（globe.gl、大圏アーク描画） | 未着手 |
 | Phase 4 | 埋め込みカード `/embed/stats.html`（Ghostブログへiframe埋め込み） | 未着手 |
 

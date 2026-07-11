@@ -5,30 +5,99 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>flight-log</title>
   <style>
-    body { font-family: system-ui, sans-serif; max-width: 40rem; margin: 4rem auto; padding: 0 1rem; color: #222; }
-    .count { font-size: 4rem; font-weight: 700; }
-    .muted { color: #888; }
+    :root {
+      --fg: #1a1a2e; --muted: #7a7a8c; --bg: #f7f7fa; --card: #fff;
+      --accent: #2456e6; --border: #e4e4ec;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --fg: #ececf2; --muted: #9a9aac; --bg: #14141c; --card: #1e1e2a; --accent: #6f96ff; --border: #2e2e3c; }
+    }
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; background: var(--bg); color: var(--fg); max-width: 52rem; margin: 0 auto; padding: 2rem 1rem 4rem; }
+    h1 { font-size: 1.5rem; margin: 0 0 .25rem; }
+    .sub { color: var(--muted); font-size: .85rem; margin-bottom: 2rem; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1rem; }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: .75rem; padding: 1.1rem 1.25rem; }
+    .card h2 { font-size: .8rem; font-weight: 600; color: var(--muted); margin: 0 0 .5rem; }
+    .big { font-size: 2.2rem; font-weight: 700; line-height: 1.1; }
+    .unit { font-size: 1rem; font-weight: 400; color: var(--muted); }
+    .pair { display: flex; gap: 2rem; }
+    .pair .label { font-size: .72rem; color: var(--muted); }
+    table { width: 100%; border-collapse: collapse; margin-top: .25rem; font-size: .9rem; }
+    th, td { text-align: right; padding: .35rem .5rem; border-bottom: 1px solid var(--border); }
+    th:first-child, td:first-child { text-align: left; }
+    th { color: var(--muted); font-weight: 600; font-size: .75rem; }
+    #countries-card { margin-top: 1rem; }
+    .flags { margin-top: .9rem; font-size: 1.9rem; line-height: 1.45; letter-spacing: .15em; }
+    .flags .transit { opacity: .35; }
+    .legend { font-size: .72rem; color: var(--muted); margin-top: .4rem; }
+    #error { color: #c0392b; }
   </style>
 </head>
 <body>
-  <h1>flight-log</h1>
-  <p class="muted">Phase 1 プレースホルダー。統計・地球儀は Phase 2/3 で実装予定。</p>
-  <div class="count" id="count">–</div>
-  <p>フライト記録</p>
-  <p class="muted" id="latest"></p>
+  <h1>✈️ flight-log</h1>
+  <p class="sub" id="updated">読み込み中…</p>
+  <p id="error" hidden>stats.json を読み込めませんでした。</p>
+
+  <div class="cards" id="cards" hidden>
+    <div class="card">
+      <h2>合計フライト数</h2>
+      <div class="big" id="total-flights">–</div>
+    </div>
+    <div class="card">
+      <h2>総移動距離</h2>
+      <div class="big" id="distance">–</div>
+    </div>
+    <div class="card">
+      <h2>年別フライト数</h2>
+      <table id="by-year"><thead><tr><th>年</th><th>便数</th><th>距離 (km)</th></tr></thead><tbody></tbody></table>
+    </div>
+  </div>
+
+  <div class="card" id="countries-card" hidden>
+    <h2>行った国</h2>
+    <div class="pair">
+      <div><div class="big" id="countries-excl">–</div><div class="label">乗り継ぎ除く</div></div>
+      <div><div class="big" id="countries-incl">–</div><div class="label">乗り継ぎ含む</div></div>
+    </div>
+    <div class="flags" id="flags"></div>
+    <div class="legend">薄い国旗は乗り継ぎのみ</div>
+  </div>
+
   <script>
-    // 表示は保存済みJSONのみを読む（API非依存の設計原則）
-    fetch('data/flights.json')
-      .then((r) => r.json())
-      .then((flights) => {
-        document.getElementById('count').textContent = flights.length;
-        const last = flights[flights.length - 1];
-        if (last) {
-          document.getElementById('latest').textContent =
-            `最新: ${last.flight_date} ${last.flight_number} ${last.origin_iata}→${last.destination_iata}`;
+    // 表示は集計済みJSONのみを読む（API非依存の設計原則）。stats.jsonはデプロイ時に生成される
+    const fmt = (n) => n.toLocaleString('ja-JP');
+    // ISO 3166-1 alpha-2 → 絵文字国旗（Regional Indicator Symbols）
+    const flagOf = (cc) => String.fromCodePoint(...[...cc].map((c) => 0x1f1e6 + c.charCodeAt(0) - 65));
+    fetch('data/stats.json')
+      .then((r) => { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then((s) => {
+        document.getElementById('total-flights').textContent = fmt(s.total_flights);
+        document.getElementById('distance').innerHTML = `${fmt(s.total_distance_km)}<span class="unit"> km</span>`;
+
+        const yearBody = document.querySelector('#by-year tbody');
+        for (const [year, v] of Object.entries(s.flights_by_year).sort((a, b) => b[0].localeCompare(a[0]))) {
+          yearBody.insertAdjacentHTML('beforeend', `<tr><td>${year}</td><td>${v.flights}</td><td>${fmt(v.distance_km)}</td></tr>`);
         }
+
+        document.getElementById('countries-excl').textContent = s.countries.excluding_layovers.count;
+        document.getElementById('countries-incl').textContent = s.countries.including_layovers.count;
+        const visited = new Set(s.countries.excluding_layovers.visits.map((v) => v.country_code));
+        const flags = document.getElementById('flags');
+        for (const v of s.countries.including_layovers.visits) {
+          const transit = visited.has(v.country_code) ? '' : ' class="transit"';
+          flags.insertAdjacentHTML('beforeend',
+            `<span${transit} title="${v.country_name}（${v.visits}回）">${flagOf(v.country_code)}</span>`);
+        }
+
+        document.getElementById('updated').textContent = `最終集計: ${new Date(s.generated_at).toLocaleString('ja-JP')}`;
+        document.getElementById('cards').hidden = false;
+        document.getElementById('countries-card').hidden = false;
       })
-      .catch(() => { document.getElementById('count').textContent = '?'; });
+      .catch(() => {
+        document.getElementById('updated').hidden = true;
+        document.getElementById('error').hidden = false;
+      });
   </script>
 </body>
 </html>
