@@ -114,3 +114,5 @@
 | Phase 4 | 埋め込みカード `/embed/stats.html`（Ghostブログへiframe埋め込み。Flightyパスポート風デザイン、stats.json＋同梱GeoJSONのみ参照） | **完了** |
 
 登録フロー（スマホ運用）: GitHubモバイルアプリ → Actions → add-flight → Run workflow → 便名と日付を入力 → ActionがAPI解決してコミット → Pagesが自動再ビルド。
+
+OGP: 統計ページと埋め込みカードにog/twitterメタタグあり。`site/assets/og-image.png`（1200×630）は静的スナップショットで自動更新されない。差し替えは `/embed/stats.html?ogp=1`（撮影用モード: ヘッダー＋地図のみ表示）を1200×630でスクリーンショット。

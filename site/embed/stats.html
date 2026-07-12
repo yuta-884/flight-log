@@ -4,6 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>my flight log</title>
+  <meta property="og:title" content="MY FLIGHT LOG">
+  <meta property="og:description" content="Personal flight stats — routes, distance, flight time and countries.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yuta-884.github.io/flight-log/embed/stats.html">
+  <meta property="og:image" content="https://yuta-884.github.io/flight-log/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
   <style>
     /* 埋め込みカード。統計ページと同じダークトーン（iframeで外部ブログから参照される
        想定のためテーマ切替はせずダーク固定、ページ背景は透過） */
@@ -66,6 +72,10 @@
     }
     .mrz .line { display: flex; white-space: nowrap; }
     .mrz .fill { flex: 1; overflow: hidden; } /* '<'の連続を横幅いっぱいまで敷き詰めてクリップ */
+    /* OGP画像撮影モード（?ogp=1）: 1200x630のリンクカード画像用にヘッダー＋地図だけを表示 */
+    body.ogp { padding: 0; }
+    body.ogp .card { max-width: none; border-radius: 0; box-shadow: none; padding: 1.4rem 2.2rem; }
+    body.ogp .flags, body.ogp .divider, body.ogp .idrow, body.ogp .stats, body.ogp .mrz { display: none; }
     @media (max-width: 480px) {
       .idrow { gap: 1rem; }
       .bignum .n { font-size: 2.5rem; }
@@ -102,6 +112,7 @@
   </div>
 
   <script>
+    if (location.search.includes('ogp')) document.body.classList.add('ogp');
     const fmt = (n) => n.toLocaleString('en-US');
     const flagOf = (cc) => String.fromCodePoint(...[...cc].map((c) => 0x1f1e6 + c.charCodeAt(0) - 65));
     const shortDate = (iso) => {
