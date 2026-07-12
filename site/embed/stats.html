@@ -89,7 +89,7 @@
       <div class="fields">
         <div><span class="k">Home base</span> <span id="home-base">–</span></div>
         <div><span class="k">First flight</span> <span id="first-flight">–</span></div>
-        <div><span class="k">Updated</span> <span id="updated">–</span></div>
+        <div><span class="k">Issued</span> <span id="updated">–</span></div>
       </div>
     </div>
     <div class="stats">
@@ -209,7 +209,7 @@
       const issued = shortDate(s.generated_at).replaceAll(' ', '');
       document.getElementById('mrz').innerHTML =
         `<div class="line"><span>ALLTIME&lt;&lt;&lt;&lt;SINCE${since}&lt;&lt;${s.total_flights}FLIGHTS</span><span class="fill">${FILL.replaceAll('<', '&lt;')}</span></div>` +
-        `<div class="line"><span>UPDATED${issued}${home}</span><span class="fill">${FILL.replaceAll('<', '&lt;')}</span><span>FLIGHT-LOG</span></div>`;
+        `<div class="line"><span>ISSUED${issued}${home}</span><span class="fill">${FILL.replaceAll('<', '&lt;')}</span><span>FLIGHT-LOG</span></div>`;
 
       drawMap(geo, s.globe);
       addEventListener('resize', () => drawMap(geo, s.globe));
