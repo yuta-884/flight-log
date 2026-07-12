@@ -3,130 +3,115 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>flight-log passport</title>
+  <title>my flight log</title>
   <style>
-    /* パスポート風の埋め込みカード。iframeで外部ブログから参照される想定なので
-       ページ背景は透過、カード単体で完結するスタイルにする */
+    /* 埋め込みカード。統計ページと同じダークトーン（iframeで外部ブログから参照される
+       想定のためテーマ切替はせずダーク固定、ページ背景は透過） */
     :root {
-      --paper: #f5f1e4;
-      --ink: #2b3a8f;      /* パスポートの印字ブルー */
-      --ink-strong: #1d2a6e;
-      --text: #3a3a3a;
-      --land-w: #9fd6ae;   /* 西半球の陸地 */
-      --land-e: #a9d3e8;   /* 東半球の陸地 */
-      --route: #c1773c;
-      --dot: #d94f46;
-      --cover: #1d2a6e;    /* パスポート表紙の紺 */
+      --fg: #eef0fa; --muted: #8e93ad; --card: #151827;
+      --accent: #6f96ff; --accent2: #3fe0d0; --row: #232841;
+      --land: rgba(111, 150, 255, .26);
     }
     * { box-sizing: border-box; }
     html, body { margin: 0; background: transparent; }
-    body { font-family: system-ui, -apple-system, sans-serif; color: var(--text); display: flex; justify-content: center; padding: 4px; }
-    .passport {
+    body { font-family: system-ui, -apple-system, sans-serif; color: var(--fg); display: flex; justify-content: center; padding: 4px; }
+    .card {
       width: 100%; max-width: 640px;
-      background: var(--cover);
-      border-radius: 26px;
-      padding: 10px 0 6px;
-      box-shadow: 0 12px 34px rgba(20, 30, 80, .25);
+      position: relative; border-radius: 1.1rem; overflow: hidden;
+      background: linear-gradient(155deg, color-mix(in srgb, var(--card) 88%, var(--accent)) 0%, var(--card) 45%);
+      box-shadow: 0 20px 50px rgba(30, 60, 180, .22), 0 2px 12px rgba(0, 0, 0, .45);
+      padding: 1.2rem 1.4rem 1rem;
     }
-    .page {
-      background:
-        repeating-radial-gradient(ellipse 140% 90% at 50% -30%, transparent 0 7px, rgba(43, 58, 143, .035) 7px 8px),
-        repeating-radial-gradient(ellipse 140% 90% at 50% 130%, transparent 0 7px, rgba(43, 58, 143, .035) 7px 8px),
-        var(--paper);
-      border-radius: 18px 18px 24px 24px;
-      margin: 0 4px;
-      overflow: hidden;
+    .card::before {
+      content: ''; position: absolute; inset: 0 0 auto 0; height: 1px;
+      background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent2) 55%, transparent), transparent);
     }
-    .strip {
-      display: flex; justify-content: center; gap: 1.1rem; padding: .45rem 0 .1rem;
-      color: #b9c2e6; font-size: .7rem; letter-spacing: .35em; user-select: none;
-      white-space: nowrap; overflow: hidden;
-    }
-    #map { display: block; width: 100%; }
-    .flags { text-align: center; padding: 0 1rem .9rem; line-height: 1; }
-    .flags span {
-      display: inline-block; width: 1.7rem; height: 1.7rem; border-radius: 50%;
-      background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25);
-      font-size: 1.25rem; line-height: 1.7rem; text-align: center; overflow: hidden;
-      margin: 0 -0.22rem;
-    }
-    .tear {
-      border: none; border-top: 2px dashed #c9c2ab; margin: 0;
-      position: relative;
-    }
-    .body { padding: 1.1rem 1.5rem 0.8rem; }
+    .head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: .6rem; }
     h1 {
-      color: var(--ink); font-size: 1.55rem; letter-spacing: .12em; margin: 0 0 .2rem;
-      font-weight: 800;
+      font-size: 1.35rem; font-weight: 800; letter-spacing: .1em; margin: 0;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
     }
-    .subtitle { color: #6b6b6b; font-size: .72rem; font-weight: 700; letter-spacing: .18em; margin-bottom: 1.1rem; }
-    .subtitle::before { content: '⬤▬ '; color: #444; font-size: .6rem; letter-spacing: 0; }
-    .idrow { display: flex; gap: 1.5rem; align-items: flex-start; }
+    .tagline { font-size: .66rem; font-weight: 700; letter-spacing: .18em; color: var(--muted); text-transform: uppercase; }
+    #map { display: block; width: 100%; border-radius: .6rem; }
+    .flags { text-align: center; padding: .7rem 0 .9rem; line-height: 1.6; }
+    .flags span {
+      display: inline-block; width: 1.6rem; height: 1.6rem; border-radius: 50%;
+      background: var(--row); box-shadow: 0 1px 4px rgba(0, 0, 0, .4);
+      font-size: 1.15rem; line-height: 1.6rem; text-align: center; overflow: hidden;
+      margin: 0 -0.18rem;
+    }
+    .divider {
+      height: 1px; border: none; margin: 0 0 1rem;
+      background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 45%, transparent), transparent);
+    }
+    .idrow { display: flex; gap: 1.6rem; align-items: flex-start; }
     .bignum { line-height: 1; }
-    .bignum .n { font-size: 3.6rem; font-weight: 800; color: #333; letter-spacing: -.02em; }
-    .bignum .u { display: block; font-size: 2rem; color: var(--ink); font-weight: 500; margin-top: .2rem; }
-    .fields { flex: 1; display: grid; gap: .5rem; font-size: .95rem; padding-top: .3rem; }
-    .fields .k { color: var(--ink); font-weight: 600; margin-right: .4rem; }
-    .stats { display: flex; gap: 1rem; justify-content: space-between; margin: 1.3rem 0 .9rem; flex-wrap: wrap; }
-    .stat .k { color: var(--ink); font-weight: 600; font-size: .95rem; }
-    .stat .v { font-size: 1.7rem; font-weight: 800; color: #333; }
-    .stat .v small { font-weight: 500; color: #666; font-size: 1.1rem; }
-    .mrz {
-      border-top: 1px solid #d8d2bd; padding: .55rem .2rem .3rem; margin: 0 -0.4rem;
-      font-family: 'Courier New', ui-monospace, monospace; font-weight: 700;
-      font-size: clamp(.55rem, 2.4vw, .82rem); letter-spacing: .06em; color: #555;
-      white-space: pre; overflow: hidden;
+    .bignum .n {
+      font-size: 3.2rem; font-weight: 800; letter-spacing: -.01em;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
     }
+    .bignum .u { display: block; font-size: 1.5rem; color: var(--muted); font-weight: 500; margin-top: .25rem; }
+    .fields { flex: 1; display: grid; gap: .45rem; font-size: .9rem; padding-top: .25rem; }
+    .fields .k { color: var(--muted); font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; display: block; }
+    .stats { display: flex; gap: 1rem; justify-content: space-between; margin: 1.2rem 0 1rem; flex-wrap: wrap; }
+    .stat .k { color: var(--muted); font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; }
+    .stat .v { font-size: 1.5rem; font-weight: 800; }
+    .stat .v small { font-weight: 500; color: var(--muted); font-size: .95rem; }
+    .mrz {
+      border-top: 1px solid var(--row); padding-top: .5rem;
+      font-family: 'Courier New', ui-monospace, monospace; font-weight: 700;
+      font-size: clamp(.58rem, 2.3vw, .8rem); letter-spacing: .05em; color: var(--muted);
+    }
+    .mrz .line { display: flex; white-space: nowrap; }
+    .mrz .fill { flex: 1; overflow: hidden; } /* '<'の連続を横幅いっぱいまで敷き詰めてクリップ */
     @media (max-width: 480px) {
       .idrow { gap: 1rem; }
-      .bignum .n { font-size: 2.7rem; }
-      .bignum .u { font-size: 1.5rem; }
-      .fields { font-size: .8rem; }
-      h1 { font-size: 1.2rem; }
+      .bignum .n { font-size: 2.5rem; }
+      .bignum .u { font-size: 1.2rem; }
+      h1 { font-size: 1.05rem; }
+      .tagline { display: none; }
     }
   </style>
 </head>
 <body>
-  <div class="passport">
-    <div class="page">
-      <div class="strip" id="strip">✈ ✈ ✈</div>
-      <canvas id="map"></canvas>
-      <div class="flags" id="flags"></div>
-      <hr class="tear">
-      <div class="body">
-        <h1>MY FLIGHT PASSPORT</h1>
-        <div class="subtitle">PASSPORT・PASS・PASAPORTE</div>
-        <div class="idrow">
-          <div class="bignum"><span class="n" id="flights">–</span><span class="u">flights</span></div>
-          <div class="fields">
-            <div><span class="k">Authority</span> flight-log</div>
-            <div><span class="k">Place of issue</span> <span id="issue-place">–</span></div>
-            <div><span class="k">Date of issue</span> <span id="issue-date">–</span></div>
-            <div><span class="k">Member since</span> <span id="member-since">–</span></div>
-          </div>
-        </div>
-        <div class="stats">
-          <div class="stat"><div class="k">Distance</div><div class="v"><span id="distance">–</span> <small>km</small></div></div>
-          <div class="stat"><div class="k">Flight Time</div><div class="v" id="flight-time">–</div></div>
-          <div class="stat"><div class="k">Airports</div><div class="v" id="airports">–</div></div>
-          <div class="stat"><div class="k">Airlines</div><div class="v" id="airlines">–</div></div>
-        </div>
-        <div class="mrz" id="mrz"></div>
+  <div class="card">
+    <div class="head">
+      <h1>MY FLIGHT LOG</h1>
+      <div class="tagline">Personal Flight Stats</div>
+    </div>
+    <canvas id="map"></canvas>
+    <div class="flags" id="flags"></div>
+    <hr class="divider">
+    <div class="idrow">
+      <div class="bignum"><span class="n" id="flights">–</span><span class="u">flights</span></div>
+      <div class="fields">
+        <div><span class="k">Home base</span> <span id="home-base">–</span></div>
+        <div><span class="k">First flight</span> <span id="first-flight">–</span></div>
+        <div><span class="k">Updated</span> <span id="updated">–</span></div>
       </div>
     </div>
+    <div class="stats">
+      <div class="stat"><div class="k">Distance</div><div class="v"><span id="distance">–</span> <small>km</small></div></div>
+      <div class="stat"><div class="k">Flight Time</div><div class="v" id="flight-time">–</div></div>
+      <div class="stat"><div class="k">Airports</div><div class="v" id="airports">–</div></div>
+      <div class="stat"><div class="k">Airlines</div><div class="v" id="airlines">–</div></div>
+    </div>
+    <div class="mrz" id="mrz"></div>
   </div>
 
   <script>
     const fmt = (n) => n.toLocaleString('en-US');
     const flagOf = (cc) => String.fromCodePoint(...[...cc].map((c) => 0x1f1e6 + c.charCodeAt(0) - 65));
-    const passportDate = (iso) => {
+    const shortDate = (iso) => {
       const d = new Date(iso);
       const mon = d.toLocaleString('en-US', { month: 'short' }).toUpperCase();
       return `${String(d.getDate()).padStart(2, '0')} ${mon} ${String(d.getFullYear()).slice(2)}`;
     };
-    const mrzLine = (s) => (s.toUpperCase().replace(/[^A-Z0-9<.@-]/g, '') + '<'.repeat(44)).slice(0, 44);
+    const FILL = '<'.repeat(400);
 
-    // 等長方形図法（アンタークティカは切る）。ルートは大圏をslerpで近似
+    // 等長方形図法（南極は切る）。ルートは大圏をslerpで近似
     const LAT_TOP = 84, LAT_BOTTOM = -58;
     function project(lon, lat, W, H) {
       return [((lon + 180) / 360) * W, ((LAT_TOP - lat) / (LAT_TOP - LAT_BOTTOM)) * H];
@@ -148,21 +133,18 @@
 
     function drawMap(geo, globe) {
       const canvas = document.getElementById('map');
-      const cssW = canvas.parentElement.clientWidth;
-      const cssH = Math.round(cssW * 0.46);
+      const W = canvas.parentElement.querySelector('.head').clientWidth; // カード内側（パディング除く）の幅に合わせる
+      const H = Math.round(W * 0.46);
       const dpr = devicePixelRatio || 1;
-      canvas.width = cssW * dpr; canvas.height = cssH * dpr;
-      canvas.style.height = cssH + 'px';
+      canvas.width = W * dpr; canvas.height = H * dpr;
+      canvas.style.height = H + 'px';
       const ctx = canvas.getContext('2d');
       ctx.scale(dpr, dpr);
-      const W = cssW, H = cssH;
 
-      // 陸地（西半球=緑、東半球=青のパスポート風2トーン）
+      // 陸地（単一色に統一）
+      ctx.fillStyle = 'rgba(111, 150, 255, .26)';
       for (const f of geo.features) {
         const polys = f.geometry.type === 'Polygon' ? [f.geometry.coordinates] : f.geometry.coordinates;
-        const firstLon = polys[0][0][0][0];
-        ctx.fillStyle = firstLon < -30 ? 'var(--land-w)' : 'var(--land-e)';
-        ctx.fillStyle = firstLon < -30 ? '#9fd6ae' : '#a9d3e8';
         for (const poly of polys) {
           ctx.beginPath();
           for (const ring of poly) {
@@ -175,8 +157,8 @@
           ctx.fill('evenodd');
         }
       }
-      // ルート（大圏アーク）
-      ctx.strokeStyle = '#c1773c'; ctx.globalAlpha = 0.85; ctx.lineWidth = 1.4;
+      // ルート（大圏アーク、アクセントシアン）
+      ctx.strokeStyle = '#3fe0d0'; ctx.globalAlpha = 0.55; ctx.lineWidth = 1.2;
       for (const r of globe.routes) {
         const pts = greatCircle(r.from, r.to);
         ctx.beginPath();
@@ -194,9 +176,9 @@
       // 空港ドット
       for (const a of globe.airports) {
         const [x, y] = project(a.lon, a.lat, W, H);
-        ctx.beginPath(); ctx.arc(x, y, 4, 0, Math.PI * 2);
-        ctx.fillStyle = '#d94f46'; ctx.fill();
-        ctx.lineWidth = 1.4; ctx.strokeStyle = '#f6efe0'; ctx.stroke();
+        ctx.beginPath(); ctx.arc(x, y, 3.2, 0, Math.PI * 2);
+        ctx.fillStyle = '#6f96ff'; ctx.fill();
+        ctx.lineWidth = 1.2; ctx.strokeStyle = '#0c1122'; ctx.stroke();
       }
     }
 
@@ -213,28 +195,26 @@
       document.getElementById('airlines').textContent = s.airlines.count;
 
       const home = s.airports.ranking[0]?.iata ?? '';
-      document.getElementById('issue-place').textContent = home;
-      document.getElementById('issue-date').textContent = passportDate(s.generated_at);
-      document.getElementById('member-since').textContent = passportDate(s.first_flight_date);
+      document.getElementById('home-base').textContent = home;
+      document.getElementById('first-flight').textContent = shortDate(s.first_flight_date);
+      document.getElementById('updated').textContent = shortDate(s.generated_at);
 
       const flags = document.getElementById('flags');
       for (const v of s.countries.including_layovers.visits) {
         flags.insertAdjacentHTML('beforeend', `<span title="${v.country_name}">${flagOf(v.country_code)}</span>`);
       }
 
-      const strip = document.getElementById('strip');
-      strip.textContent = `✈  ✈  ✈  ◉ ${home}  ✈  ✈  ✈  ✈  ◉ ${home}  ✈  ✈  ✈`;
-
-      const since = passportDate(s.first_flight_date).replaceAll(' ', '');
-      const issued = passportDate(s.generated_at).replaceAll(' ', '');
-      document.getElementById('mrz').textContent =
-        mrzLine(`ALLTIME<<<<SINCE${since}<<@FLIGHT-LOG`) + '\n' +
-        mrzLine(`ISSUED${issued}${home}<<<<<<<<<<<<<<<GITHUB.COM`);
+      // フッター: MRZ風の装飾を横幅いっぱいに（.fillの'<'連続をflexで敷き詰めてクリップ）
+      const since = shortDate(s.first_flight_date).replaceAll(' ', '');
+      const issued = shortDate(s.generated_at).replaceAll(' ', '');
+      document.getElementById('mrz').innerHTML =
+        `<div class="line"><span>ALLTIME&lt;&lt;&lt;&lt;SINCE${since}&lt;&lt;${s.total_flights}FLIGHTS</span><span class="fill">${FILL.replaceAll('<', '&lt;')}</span></div>` +
+        `<div class="line"><span>UPDATED${issued}${home}</span><span class="fill">${FILL.replaceAll('<', '&lt;')}</span><span>FLIGHT-LOG</span></div>`;
 
       drawMap(geo, s.globe);
       addEventListener('resize', () => drawMap(geo, s.globe));
     }).catch(() => {
-      document.body.innerHTML = '<p style="font-family:system-ui">Failed to load stats.</p>';
+      document.body.innerHTML = '<p style="font-family:system-ui;color:#eef0fa">Failed to load stats.</p>';
     });
   </script>
 </body>
