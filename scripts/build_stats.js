@@ -229,6 +229,7 @@ const stats = {
   counted_through: today, // この日以前の出発便のみ集計対象
   layover_threshold_hours: LAYOVER_THRESHOLD_HOURS,
   total_flights: flights.length,
+  first_flight_date: flights[0]?.flight_date ?? null,
   flights_by_year: byYear,
   countries: {
     including_layovers: { count: visitsIncl.length, visits: visitsIncl },
