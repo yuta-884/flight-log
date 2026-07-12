@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -90,8 +90,8 @@
 </head>
 <body>
   <h1>✈️ flight-log</h1>
-  <p class="sub" id="updated">読み込み中…</p>
-  <p id="error" hidden>stats.json を読み込めませんでした。</p>
+  <p class="sub" id="updated">Loading…</p>
+  <p id="error" hidden>Failed to load stats.json.</p>
 
   <div class="card" id="globe-card" hidden>
     <div id="globe"></div>
@@ -100,11 +100,11 @@
   <div id="cards" hidden>
     <div class="cards two">
       <div class="card">
-        <h2>総移動距離</h2>
+        <h2>Distance</h2>
         <div class="big" id="distance">–</div>
       </div>
       <div class="card">
-        <h2>総飛行時間</h2>
+        <h2>Flight Time</h2>
         <div class="big" id="flight-time">–</div>
         <div class="conversions" id="flight-time-conv"></div>
       </div>
@@ -113,35 +113,35 @@
       <div class="card">
         <h2>Flights</h2>
         <div class="big" id="total-flights">–</div>
-        <table id="by-year"><thead><tr><th>年</th><th>便数</th><th>距離 (km)</th></tr></thead><tbody></tbody></table>
+        <table id="by-year"><thead><tr><th>Year</th><th>Flights</th><th>Distance (km)</th></tr></thead><tbody></tbody></table>
       </div>
       <div class="card">
         <h2>Airports</h2>
         <div class="big" id="airport-count">–</div>
-        <table id="top-airports"><thead><tr><th>空港</th><th>発着</th></tr></thead><tbody></tbody></table>
+        <table id="top-airports"><thead><tr><th>Airport</th><th>Visits</th></tr></thead><tbody></tbody></table>
       </div>
       <div class="card">
         <h2>Airlines</h2>
         <div class="big" id="airline-count">–</div>
-        <table id="top-airlines"><thead><tr><th>航空会社</th><th>便数</th></tr></thead><tbody></tbody></table>
+        <table id="top-airlines"><thead><tr><th>Airline</th><th>Flights</th></tr></thead><tbody></tbody></table>
       </div>
     </div>
   </div>
 
   <div class="card" id="countries-card" hidden>
-    <h2>行った国</h2>
+    <h2>Countries &amp; Territories</h2>
     <div class="pair">
-      <div><div class="big" id="countries-excl">–</div><div class="label">乗り継ぎ除く</div></div>
-      <div><div class="big" id="countries-incl">–</div><div class="label">乗り継ぎ含む</div></div>
+      <div><div class="big" id="countries-excl">–</div><div class="label">Excl. layovers</div></div>
+      <div><div class="big" id="countries-incl">–</div><div class="label">Incl. layovers</div></div>
     </div>
     <div class="flags" id="flags"></div>
-    <div class="legend">薄い国旗は乗り継ぎのみ</div>
+    <div class="legend">Dimmed flags are layover-only</div>
   </div>
 
   <script src="vendor/globe.gl.min.js"></script>
   <script>
     // 表示は集計済みJSONのみを読む（API非依存の設計原則）。stats.jsonはデプロイ時に生成される
-    const fmt = (n) => n.toLocaleString('ja-JP');
+    const fmt = (n) => n.toLocaleString('en-US');
 
     // 地球儀（globe.gl）: 全ルートを大圏アークで描画。陸地は同梱GeoJSONの六角形表現
     // （テクスチャ・CDN不使用でオフライン動作）。ドラッグ/タッチで回転、自動回転つき
@@ -235,10 +235,10 @@
         for (const v of s.countries.including_layovers.visits) {
           const transit = visited.has(v.country_code) ? '' : ' class="transit"';
           flags.insertAdjacentHTML('beforeend',
-            `<span${transit} title="${v.country_name}（${v.visits}回）">${flagOf(v.country_code)}</span>`);
+            `<span${transit} title="${v.country_name}">${flagOf(v.country_code)}</span>`);
         }
 
-        document.getElementById('updated').textContent = `最終集計: ${new Date(s.generated_at).toLocaleString('ja-JP')}`;
+        document.getElementById('updated').textContent = `Last updated: ${new Date(s.generated_at).toLocaleString('en-US')}`;
         document.getElementById('cards').hidden = false;
         document.getElementById('countries-card').hidden = false;
         if (s.globe) initGlobe(s.globe);
