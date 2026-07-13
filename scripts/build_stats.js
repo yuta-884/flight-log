@@ -118,17 +118,15 @@ function flightMinutes(f) {
     warnings.push(`${f.flight_number} ${f.flight_date}: 空港tzが不明で飛行時間を計算できません`);
     return null;
   }
-  const pairs = [
-    [f.ops?.actual_gate_departure, f.ops?.actual_gate_arrival],
-    [f.scheduled_departure, f.scheduled_arrival],
-    [f.ops?.actual_takeoff, f.ops?.actual_landing],
-  ];
-  for (const [dep, arr] of pairs) {
-    if (!dep || !arr) continue;
+  // 公表スケジュール（事実）から予定ブロックタイムで算出する。実測時刻（ops）は
+  // AeroDataBox独自の運航データで規約上保存しないため使わない。本アプリは搭乗記録で
+  // あり遅延追跡ではないので、予定ベースで十分
+  const dep = f.scheduled_departure, arr = f.scheduled_arrival;
+  if (dep && arr) {
     const min = Math.round((localToUtcMs(arr, dTz) - localToUtcMs(dep, oTz)) / 60000);
-    if (min > 0 && min < 20 * 60) return min; // 不正値（負・20時間超）は次の候補へ
+    if (min > 0 && min < 20 * 60) return min; // 不正値（負・20時間超）は除外
   }
-  warnings.push(`${f.flight_number} ${f.flight_date}: 有効な時刻ペアがなく飛行時間から除外`);
+  warnings.push(`${f.flight_number} ${f.flight_date}: 予定時刻がなく飛行時間から除外`);
   return null;
 }
 

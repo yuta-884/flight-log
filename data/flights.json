@@ -13,19 +13,7 @@
     "scheduled_arrival": "2022-07-15T21:45",
     "distance_km": 4649,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1N",
-      "dep_gate": "23",
-      "arr_terminal": null,
-      "arr_gate": null,
-      "aircraft_type": "Boeing 787-8",
-      "tail_number": "JA825J",
-      "actual_gate_departure": "2022-07-15T17:04",
-      "actual_takeoff": "2022-07-15T17:21",
-      "actual_landing": "2022-07-15T21:11",
-      "actual_gate_arrival": "2022-07-15T21:21"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "a4700600-e427-446d-ad41-e4564ea33524",
@@ -41,19 +29,7 @@
     "scheduled_arrival": "2022-07-31T07:30",
     "distance_km": 4649,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": null,
-      "dep_gate": null,
-      "arr_terminal": "1N",
-      "arr_gate": "21",
-      "aircraft_type": "Boeing 787-8",
-      "tail_number": "JA825J",
-      "actual_gate_departure": "2022-07-30T23:17",
-      "actual_takeoff": "2022-07-30T23:33",
-      "actual_landing": "2022-07-31T07:18",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "4e748733-f578-49a8-8417-a132b680c7ad",
@@ -69,19 +45,7 @@
     "scheduled_arrival": "2022-10-01T08:30",
     "distance_km": 432,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "24",
-      "arr_terminal": "1",
-      "arr_gate": "23",
-      "aircraft_type": "Boeing 737-800",
-      "tail_number": "JA345J",
-      "actual_gate_departure": "2022-10-01T07:22",
-      "actual_takeoff": "2022-10-01T07:38",
-      "actual_landing": "2022-10-01T08:35",
-      "actual_gate_arrival": "2022-10-01T08:43"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "ed3b546f-c26d-4f32-b59e-82171ce9a5c2",
@@ -97,19 +61,7 @@
     "scheduled_arrival": "2023-02-05T10:15",
     "distance_km": 491,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "3",
-      "dep_gate": "175",
-      "arr_terminal": "1",
-      "arr_gate": "41",
-      "aircraft_type": "Airbus A320",
-      "tail_number": "JA03JJ",
-      "actual_gate_departure": "2023-02-05T08:39",
-      "actual_takeoff": "2023-02-05T08:54",
-      "actual_landing": "2023-02-05T10:05",
-      "actual_gate_arrival": "2023-02-05T10:11"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "c16846b9-bf16-45e3-b323-779877a23533",
@@ -125,19 +77,7 @@
     "scheduled_arrival": "2023-02-19T09:00",
     "distance_km": 491,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "39",
-      "arr_terminal": "3",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A320",
-      "tail_number": "JA01JJ",
-      "actual_gate_departure": "2023-02-19T07:32",
-      "actual_takeoff": "2023-02-19T07:45",
-      "actual_landing": "2023-02-19T08:42",
-      "actual_gate_arrival": "2023-02-19T08:50"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "93cf0a7a-2e8c-493e-ba01-6a244b5aebe5",
@@ -153,19 +93,7 @@
     "scheduled_arrival": "2023-05-06T14:05",
     "distance_km": 1257,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "2",
-      "dep_gate": "87",
-      "arr_terminal": "1",
-      "arr_gate": "104",
-      "aircraft_type": "Boeing 737-800",
-      "tail_number": "HL8220",
-      "actual_gate_departure": "2023-05-06T11:09",
-      "actual_takeoff": "2023-05-06T11:43",
-      "actual_landing": "2023-05-06T13:39",
-      "actual_gate_arrival": "2023-05-06T13:46"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "e9b60a00-98c3-472e-8c32-0636aac0d25d",
@@ -181,19 +109,7 @@
     "scheduled_arrival": "2023-05-14T12:15",
     "distance_km": 1257,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "123",
-      "arr_terminal": "1N",
-      "arr_gate": "25",
-      "aircraft_type": "Boeing 777-200 ER",
-      "tail_number": "HL7734",
-      "actual_gate_departure": "2023-05-14T09:45",
-      "actual_takeoff": "2023-05-14T10:14",
-      "actual_landing": "2023-05-14T12:00",
-      "actual_gate_arrival": "2023-05-14T12:15"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "ddb0e25e-8f97-4ac3-ba8b-2bcccfa90518",
@@ -209,19 +125,7 @@
     "scheduled_arrival": "2023-05-20T16:15",
     "distance_km": 491,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "3",
-      "dep_gate": "161",
-      "arr_terminal": "1",
-      "arr_gate": "40",
-      "aircraft_type": "Airbus A320",
-      "tail_number": "JA10JJ",
-      "actual_gate_departure": "2023-05-20T14:38",
-      "actual_takeoff": "2023-05-20T14:51",
-      "actual_landing": "2023-05-20T15:56",
-      "actual_gate_arrival": "2023-05-20T16:02"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "bc3a850f-a321-42cf-ab23-2f3b13cd1f1e",
@@ -237,19 +141,7 @@
     "scheduled_arrival": "2023-05-21T16:05",
     "distance_km": 491,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "38",
-      "arr_terminal": "3",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A320",
-      "tail_number": "JA05JJ",
-      "actual_gate_departure": "2023-05-21T14:52",
-      "actual_takeoff": "2023-05-21T15:06",
-      "actual_landing": "2023-05-21T16:05",
-      "actual_gate_arrival": "2023-05-21T16:08"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "acba63f8-eb9d-4111-b8ab-6668ec80d534",
@@ -265,19 +157,7 @@
     "scheduled_arrival": "2023-05-24T19:50",
     "distance_km": 788,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "3",
-      "dep_gate": "162",
-      "arr_terminal": "D",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A321neo",
-      "tail_number": "JA27LR",
-      "actual_gate_departure": "2023-05-24T17:57",
-      "actual_takeoff": "2023-05-24T18:18",
-      "actual_landing": "2023-05-24T19:36",
-      "actual_gate_arrival": "2023-05-24T19:39"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "5310f905-4f04-4c26-bad0-352335d30b64",
@@ -293,19 +173,7 @@
     "scheduled_arrival": "2023-05-29T22:15",
     "distance_km": 788,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "D",
-      "dep_gate": null,
-      "arr_terminal": "3",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A321neo",
-      "tail_number": "JA26LR",
-      "actual_gate_departure": "2023-05-29T20:35",
-      "actual_takeoff": "2023-05-29T20:47",
-      "actual_landing": "2023-05-29T22:00",
-      "actual_gate_arrival": "2023-05-29T22:04"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "c5ca5d76-b6b3-45ec-8711-7d74386fd973",
@@ -321,19 +189,7 @@
     "scheduled_arrival": "2023-07-05T09:25",
     "distance_km": 491,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "38",
-      "arr_terminal": "3",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A320",
-      "tail_number": "JA21JJ",
-      "actual_gate_departure": "2023-07-05T08:00",
-      "actual_takeoff": "2023-07-05T08:13",
-      "actual_landing": "2023-07-05T09:24",
-      "actual_gate_arrival": "2023-07-05T09:27"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "6ec4685e-122f-4661-be5f-d9fd5d829621",
@@ -349,19 +205,7 @@
     "scheduled_arrival": "2023-08-28T20:10",
     "distance_km": 491,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "3",
-      "dep_gate": "162",
-      "arr_terminal": "1",
-      "arr_gate": "24",
-      "aircraft_type": "Airbus A320",
-      "tail_number": "JA08JJ",
-      "actual_gate_departure": "2023-08-28T18:47",
-      "actual_takeoff": "2023-08-28T19:14",
-      "actual_landing": "2023-08-28T20:19",
-      "actual_gate_arrival": "2023-08-28T20:25"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "d9eaaa22-2aa0-4b4f-b08c-242c3e1d1f30",
@@ -377,19 +221,7 @@
     "scheduled_arrival": "2023-09-03T13:50",
     "distance_km": 4161,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "16",
-      "arr_terminal": null,
-      "arr_gate": null,
-      "aircraft_type": "Airbus A330-300",
-      "tail_number": "HSXTC",
-      "actual_gate_departure": "2023-09-03T10:01",
-      "actual_takeoff": "2023-09-03T10:20",
-      "actual_landing": "2023-09-03T13:58",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "26988508-8014-4091-8851-e72397766de5",
@@ -405,19 +237,7 @@
     "scheduled_arrival": "2023-09-17T15:20",
     "distance_km": 741,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": null,
-      "arr_terminal": "2",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A320",
-      "tail_number": "HSABT",
-      "actual_gate_departure": "2023-09-17T13:40",
-      "actual_takeoff": "2023-09-17T13:45",
-      "actual_landing": "2023-09-17T15:19",
-      "actual_gate_arrival": "2023-09-17T15:20"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "e7529da5-6aab-4c1f-a611-0f05b845e8f7",
@@ -433,19 +253,7 @@
     "scheduled_arrival": "2023-09-23T01:00",
     "distance_km": 4324,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "2",
-      "dep_gate": null,
-      "arr_terminal": "3",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A321neo",
-      "tail_number": "VNA653",
-      "actual_gate_departure": "2023-09-22T17:00",
-      "actual_takeoff": "2023-09-22T17:32",
-      "actual_landing": "2023-09-23T01:02",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "b84dd490-5b87-4dd7-83d5-09857788def0",
@@ -461,19 +269,7 @@
     "scheduled_arrival": "2023-09-30T18:50",
     "distance_km": 940,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "3",
-      "dep_gate": "163",
-      "arr_terminal": "D",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A320",
-      "tail_number": "JA07JJ",
-      "actual_gate_departure": "2023-09-30T16:38",
-      "actual_takeoff": "2023-09-30T17:03",
-      "actual_landing": "2023-09-30T18:40",
-      "actual_gate_arrival": "2023-09-30T18:53"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "46f52f13-f7a0-456b-a3b8-e25e9a2412ff",
@@ -489,19 +285,7 @@
     "scheduled_arrival": "2023-10-13T22:20",
     "distance_km": 940,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "D",
-      "dep_gate": "2",
-      "arr_terminal": "1",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A320neo",
-      "tail_number": "JA205P",
-      "actual_gate_departure": "2023-10-13T20:21",
-      "actual_takeoff": "2023-10-13T20:38",
-      "actual_landing": "2023-10-13T21:57",
-      "actual_gate_arrival": "2023-10-13T22:06"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "9846017f-3122-406e-ad8f-007692d96695",
@@ -517,19 +301,7 @@
     "scheduled_arrival": "2023-10-20T21:55",
     "distance_km": 491,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "B",
-      "arr_terminal": "2",
-      "arr_gate": "96",
-      "aircraft_type": "Airbus A320neo",
-      "tail_number": "JA211P",
-      "actual_gate_departure": "2023-10-20T20:39",
-      "actual_takeoff": "2023-10-20T20:58",
-      "actual_landing": "2023-10-20T22:20",
-      "actual_gate_arrival": "2023-10-20T22:23"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "c04a5510-4f54-4cb8-8a0f-744af5f1a3e6",
@@ -545,19 +317,7 @@
     "scheduled_arrival": "2023-10-21T18:55",
     "distance_km": 491,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "2",
-      "dep_gate": "92",
-      "arr_terminal": "1",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A320",
-      "tail_number": "JA819P",
-      "actual_gate_departure": "2023-10-21T17:30",
-      "actual_takeoff": "2023-10-21T17:41",
-      "actual_landing": "2023-10-21T18:39",
-      "actual_gate_arrival": "2023-10-21T18:55"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "160ebe81-e366-4ab5-b6f0-0441df7d68ca",
@@ -573,19 +333,7 @@
     "scheduled_arrival": "2023-10-30T21:15",
     "distance_km": 582,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "12",
-      "arr_terminal": null,
-      "arr_gate": null,
-      "aircraft_type": "Boeing 737-800",
-      "tail_number": "JA336J",
-      "actual_gate_departure": "2023-10-30T20:14",
-      "actual_takeoff": "2023-10-30T20:32",
-      "actual_landing": "2023-10-30T21:24",
-      "actual_gate_arrival": "2023-10-30T21:26"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "df0d75be-0d7c-417c-bdc2-eb508fee21ad",
@@ -601,19 +349,7 @@
     "scheduled_arrival": "2023-10-31T22:15",
     "distance_km": 582,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": null,
-      "dep_gate": "2",
-      "arr_terminal": "1",
-      "arr_gate": null,
-      "aircraft_type": "Boeing 737-800",
-      "tail_number": "JA334J",
-      "actual_gate_departure": "2023-10-31T20:46",
-      "actual_takeoff": "2023-10-31T20:56",
-      "actual_landing": "2023-10-31T21:56",
-      "actual_gate_arrival": "2023-10-31T22:00"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "19597d9e-6fed-45ac-8c3d-d4eae8da6719",
@@ -629,19 +365,7 @@
     "scheduled_arrival": "2024-02-22T20:00",
     "distance_km": 1737,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "3",
-      "dep_gate": "140",
-      "arr_terminal": "1",
-      "arr_gate": null,
-      "aircraft_type": "Boeing 737-800",
-      "tail_number": "B1448",
-      "actual_gate_departure": "2024-02-22T17:22",
-      "actual_takeoff": "2024-02-22T17:47",
-      "actual_landing": "2024-02-22T19:41",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "8f11424f-2803-4171-9706-3b04bbc86390",
@@ -657,19 +381,7 @@
     "scheduled_arrival": "2024-02-23T01:55",
     "distance_km": 2897,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "32",
-      "arr_terminal": null,
-      "arr_gate": null,
-      "aircraft_type": "Boeing 737-800",
-      "tail_number": "B1448",
-      "actual_gate_departure": null,
-      "actual_takeoff": "2024-02-22T23:00",
-      "actual_landing": "2024-02-23T02:19",
-      "actual_gate_arrival": "2024-02-23T02:31"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "3990cf55-6034-47df-85be-8f96d3318bfc",
@@ -685,19 +397,7 @@
     "scheduled_arrival": "2024-02-26T07:30",
     "distance_km": 2727,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": null,
-      "dep_gate": "E2",
-      "arr_terminal": "2",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A320neo",
-      "tail_number": "B302Z",
-      "actual_gate_departure": "2024-02-26T03:45",
-      "actual_takeoff": "2024-02-26T04:00",
-      "actual_landing": "2024-02-26T08:21",
-      "actual_gate_arrival": "2024-02-26T08:27"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "d685e8e7-09f0-4f3e-abd6-dfc9c7be2ab9",
@@ -713,19 +413,7 @@
     "scheduled_arrival": "2024-02-26T14:30",
     "distance_km": 2035,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "2",
-      "dep_gate": "82",
-      "arr_terminal": "2",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A321neo",
-      "tail_number": "B32FC",
-      "actual_gate_departure": "2024-02-26T11:23",
-      "actual_takeoff": "2024-02-26T11:42",
-      "actual_landing": "2024-02-26T15:07",
-      "actual_gate_arrival": "2024-02-26T15:20"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "334c64fa-9ba5-4e53-a612-73d95ee766bd",
@@ -741,19 +429,7 @@
     "scheduled_arrival": "2024-05-18T14:55",
     "distance_km": 2181,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "34",
-      "arr_terminal": "1",
-      "arr_gate": "B5",
-      "aircraft_type": "Boeing 787-9",
-      "tail_number": "9VOJB",
-      "actual_gate_departure": "2024-05-18T12:17",
-      "actual_takeoff": "2024-05-18T12:40",
-      "actual_landing": "2024-05-18T14:47",
-      "actual_gate_arrival": "2024-05-18T14:57"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "f8e7aa01-dc74-4536-a815-c83667a56513",
@@ -769,19 +445,7 @@
     "scheduled_arrival": "2024-05-25T19:05",
     "distance_km": 2181,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "B5",
-      "arr_terminal": "1",
-      "arr_gate": "42",
-      "aircraft_type": "Airbus A321neo",
-      "tail_number": "9VNCF",
-      "actual_gate_departure": "2024-05-25T14:50",
-      "actual_takeoff": "2024-05-25T15:13",
-      "actual_landing": "2024-05-25T18:57",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "824ee8e2-1a5c-4685-9904-9fa358fdd8d3",
@@ -797,19 +461,7 @@
     "scheduled_arrival": "2024-05-31T14:20",
     "distance_km": 5358,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "36",
-      "arr_terminal": "1",
-      "arr_gate": "C1",
-      "aircraft_type": "Boeing 787-9",
-      "tail_number": "9VOJB",
-      "actual_gate_departure": "2024-05-31T08:24",
-      "actual_takeoff": "2024-05-31T08:38",
-      "actual_landing": "2024-05-31T14:04",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "1d060dc0-4004-4800-a742-b198ea83e41c",
@@ -825,19 +477,7 @@
     "scheduled_arrival": "2024-06-01T20:15",
     "distance_km": 6033,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "D37",
-      "arr_terminal": "2",
-      "arr_gate": "7",
-      "aircraft_type": "Boeing 787-9",
-      "tail_number": "9VOJF",
-      "actual_gate_departure": "2024-06-01T11:20",
-      "actual_takeoff": "2024-06-01T11:39",
-      "actual_landing": "2024-06-01T20:20",
-      "actual_gate_arrival": "2024-06-01T20:30"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "38cc5b1d-aeee-41d4-bf54-e0056e649fcd",
@@ -853,19 +493,7 @@
     "scheduled_arrival": "2024-06-05T06:05",
     "distance_km": 6699,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "2",
-      "dep_gate": "14",
-      "arr_terminal": "2",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A330-300",
-      "tail_number": "VNA816",
-      "actual_gate_departure": "2024-06-05T01:13",
-      "actual_takeoff": "2024-06-05T01:13",
-      "actual_landing": "2024-06-05T06:38",
-      "actual_gate_arrival": "2024-06-05T06:46"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "17d61afb-929c-4de9-8a1d-e96ede6593c9",
@@ -881,19 +509,7 @@
     "scheduled_arrival": "2024-06-14T01:00",
     "distance_km": 4324,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "2",
-      "dep_gate": null,
-      "arr_terminal": "3",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A321neo",
-      "tail_number": "VNA530",
-      "actual_gate_departure": "2024-06-13T16:30",
-      "actual_takeoff": "2024-06-13T17:01",
-      "actual_landing": "2024-06-14T00:27",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "0bc26290-c6f2-4697-aaa4-726e2a8e753f",
@@ -909,19 +525,7 @@
     "scheduled_arrival": "2024-08-04T14:05",
     "distance_km": 4649,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "2",
-      "dep_gate": "91",
-      "arr_terminal": null,
-      "arr_gate": null,
-      "aircraft_type": "Airbus A330-300",
-      "tail_number": "HSXTN",
-      "actual_gate_departure": "2024-08-04T09:22",
-      "actual_takeoff": "2024-08-04T09:41",
-      "actual_landing": "2024-08-04T13:32",
-      "actual_gate_arrival": "2024-08-04T13:39"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "34e80a04-ac35-4f0b-868d-ed2a4fef152d",
@@ -937,19 +541,7 @@
     "scheduled_arrival": "2024-09-07T15:55",
     "distance_km": 568,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "2",
-      "dep_gate": null,
-      "arr_terminal": null,
-      "arr_gate": null,
-      "aircraft_type": "Airbus A320",
-      "tail_number": "HSBBJ",
-      "actual_gate_departure": "2024-09-07T14:32",
-      "actual_takeoff": "2024-09-07T14:45",
-      "actual_landing": "2024-09-07T15:41",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "1bf612bc-ed6e-4703-b6ba-ce5487ca60b0",
@@ -965,19 +557,7 @@
     "scheduled_arrival": "2024-10-02T21:15",
     "distance_km": 1806,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": null,
-      "dep_gate": "8",
-      "arr_terminal": "2",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A320",
-      "tail_number": "9MAJK",
-      "actual_gate_departure": "2024-10-02T17:31",
-      "actual_takeoff": "2024-10-02T17:42",
-      "actual_landing": "2024-10-02T21:21",
-      "actual_gate_arrival": "2024-10-02T21:27"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "c74e1481-211d-46d6-a86c-5692b4709f4b",
@@ -993,19 +573,7 @@
     "scheduled_arrival": "2024-10-05T20:50",
     "distance_km": 5409,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "G6",
-      "arr_terminal": "2",
-      "arr_gate": "83",
-      "aircraft_type": "Boeing 737 MAX 8",
-      "tail_number": "9MLRD",
-      "actual_gate_departure": null,
-      "actual_takeoff": "2024-10-05T13:15",
-      "actual_landing": "2024-10-05T21:00",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "bb323fd0-2813-498e-90bb-63e642162b54",
@@ -1021,19 +589,7 @@
     "scheduled_arrival": "2024-10-18T16:35",
     "distance_km": 1038,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "3",
-      "dep_gate": "152",
-      "arr_terminal": "I",
-      "arr_gate": "3",
-      "aircraft_type": "Boeing 737-800",
-      "tail_number": "HL8316",
-      "actual_gate_departure": "2024-10-18T13:58",
-      "actual_takeoff": "2024-10-18T14:20",
-      "actual_landing": "2024-10-18T16:07",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "6a8d168c-34fb-47d7-8008-39395a95c79a",
@@ -1049,19 +605,7 @@
     "scheduled_arrival": "2024-10-31T13:00",
     "distance_km": 327,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "D",
-      "dep_gate": "35",
-      "arr_terminal": "D",
-      "arr_gate": "4",
-      "aircraft_type": "Boeing 737-800",
-      "tail_number": "HL8321",
-      "actual_gate_departure": "2024-10-31T12:00",
-      "actual_takeoff": "2024-10-31T12:07",
-      "actual_landing": "2024-10-31T12:50",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "b01e764e-a655-4382-b799-dfc2f90cd4d1",
@@ -1077,19 +621,7 @@
     "scheduled_arrival": "2024-11-03T01:10",
     "distance_km": 2070,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "23",
-      "arr_terminal": "1",
-      "arr_gate": null,
-      "aircraft_type": "Boeing 737-800",
-      "tail_number": "HL8303",
-      "actual_gate_departure": "2024-11-02T22:28",
-      "actual_takeoff": "2024-11-02T22:49",
-      "actual_landing": "2024-11-03T01:11",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "d5651ae1-a2a1-4982-924c-8b6be854ccbc",
@@ -1105,19 +637,7 @@
     "scheduled_arrival": "2024-11-07T18:05",
     "distance_km": 2962,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "217",
-      "arr_terminal": "2",
-      "arr_gate": "98",
-      "aircraft_type": "Airbus A321neo",
-      "tail_number": "BKKH",
-      "actual_gate_departure": "2024-11-07T12:58",
-      "actual_takeoff": "2024-11-07T13:16",
-      "actual_landing": "2024-11-07T17:58",
-      "actual_gate_arrival": "2024-11-07T18:09"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "72445e87-9c22-404b-9b8d-c66b1a5d3912",
@@ -1133,19 +653,7 @@
     "scheduled_arrival": "2024-11-13T11:50",
     "distance_km": 2181,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "3",
-      "dep_gate": "153",
-      "arr_terminal": "1",
-      "arr_gate": "B2",
-      "aircraft_type": "Airbus A321neo",
-      "tail_number": "JA27LR",
-      "actual_gate_departure": "2024-11-13T08:27",
-      "actual_takeoff": "2024-11-13T08:44",
-      "actual_landing": "2024-11-13T11:03",
-      "actual_gate_arrival": "2024-11-13T11:06"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "e9ac1846-04f9-4e00-bd92-0a5a4d125480",
@@ -1161,19 +669,7 @@
     "scheduled_arrival": "2024-11-21T00:55",
     "distance_km": 2122,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "B1",
-      "arr_terminal": "3",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A320neo",
-      "tail_number": "JA207P",
-      "actual_gate_departure": "2024-11-20T20:48",
-      "actual_takeoff": "2024-11-20T21:05",
-      "actual_landing": "2024-11-21T00:33",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "58cf195a-2538-496b-9b7b-8734679fa7f9",
@@ -1189,19 +685,7 @@
     "scheduled_arrival": "2024-12-11T18:40",
     "distance_km": 2135,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "47",
-      "arr_terminal": "3",
-      "arr_gate": "B",
-      "aircraft_type": "Airbus A321",
-      "tail_number": "B1855",
-      "actual_gate_departure": "2024-12-11T15:20",
-      "actual_takeoff": "2024-12-11T15:40",
-      "actual_landing": "2024-12-11T18:40",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "db5c0308-d7ac-4109-abe4-dbcbb7c2b207",
@@ -1217,19 +701,7 @@
     "scheduled_arrival": "2024-12-12T21:50",
     "distance_km": 2908,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "3",
-      "dep_gate": "E2",
-      "arr_terminal": null,
-      "arr_gate": null,
-      "aircraft_type": "Boeing 737-800",
-      "tail_number": "B1957",
-      "actual_gate_departure": "2024-12-12T18:52",
-      "actual_takeoff": "2024-12-12T18:56",
-      "actual_landing": "2024-12-12T22:36",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "e1486e9f-7c74-437f-8fcc-a178bf674fcb",
@@ -1245,19 +717,7 @@
     "scheduled_arrival": "2024-12-17T16:55",
     "distance_km": 568,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": null,
-      "dep_gate": "3",
-      "arr_terminal": "2",
-      "arr_gate": null,
-      "aircraft_type": "Boeing 737-900ER",
-      "tail_number": "HSLVK",
-      "actual_gate_departure": null,
-      "actual_takeoff": "2024-12-17T16:12",
-      "actual_landing": "2024-12-17T17:05",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "87a868ae-d153-4552-bebf-a1db4e457fc8",
@@ -1273,19 +733,7 @@
     "scheduled_arrival": "2024-12-20T21:35",
     "distance_km": 716,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": null,
-      "dep_gate": null,
-      "arr_terminal": "2",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A320",
-      "tail_number": "VNA699",
-      "actual_gate_departure": "2024-12-20T23:10",
-      "actual_takeoff": "2024-12-20T23:14",
-      "actual_landing": "2024-12-21T00:22",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "9102be73-e32e-4450-9e26-f3980ece9475",
@@ -1301,19 +749,7 @@
     "scheduled_arrival": "2024-12-21T07:35",
     "distance_km": 4383,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "2",
-      "dep_gate": null,
-      "arr_terminal": "2",
-      "arr_gate": "88",
-      "aircraft_type": "Airbus A321neo",
-      "tail_number": "VNA646",
-      "actual_gate_departure": "2024-12-21T01:40",
-      "actual_takeoff": "2024-12-21T01:55",
-      "actual_landing": "2024-12-21T09:10",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "6dd5a886-3950-4597-b40c-13ae9582a1a5",
@@ -1329,19 +765,7 @@
     "scheduled_arrival": "2025-01-19T15:10",
     "distance_km": 2181,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "42",
-      "arr_terminal": "1",
-      "arr_gate": "B5",
-      "aircraft_type": "Boeing 787-9",
-      "tail_number": "9VOJG",
-      "actual_gate_departure": "2025-01-19T11:57",
-      "actual_takeoff": "2025-01-19T12:16",
-      "actual_landing": "2025-01-19T14:41",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "dcf102da-63d4-430f-b7b3-16cefc354051",
@@ -1357,19 +781,7 @@
     "scheduled_arrival": "2025-01-22T16:55",
     "distance_km": 806,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "B2",
-      "arr_terminal": "1",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A321neo",
-      "tail_number": "BKKI",
-      "actual_gate_departure": "2025-01-22T15:04",
-      "actual_takeoff": "2025-01-22T15:25",
-      "actual_landing": "2025-01-22T17:00",
-      "actual_gate_arrival": "2025-01-22T17:12"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "fad02248-475c-4a1f-b386-c5ae115d38e2",
@@ -1385,19 +797,7 @@
     "scheduled_arrival": "2025-01-23T11:40",
     "distance_km": 2070,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "215",
-      "arr_terminal": "1",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A321neo",
-      "tail_number": "BKKM",
-      "actual_gate_departure": "2025-01-23T07:03",
-      "actual_takeoff": "2025-01-23T07:28",
-      "actual_landing": "2025-01-23T11:24",
-      "actual_gate_arrival": "2025-01-23T11:37"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "ff4bd0f6-a44f-4de8-845f-ee9ffd63e1d7",
@@ -1413,19 +813,7 @@
     "scheduled_arrival": "2025-01-27T12:00",
     "distance_km": 973,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": null,
-      "arr_terminal": "2",
-      "arr_gate": null,
-      "aircraft_type": "Boeing 737-800",
-      "tail_number": "HL8304",
-      "actual_gate_departure": "2025-01-27T10:38",
-      "actual_takeoff": "2025-01-27T10:51",
-      "actual_landing": "2025-01-27T12:22",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "bc30feab-facd-4fd4-b504-53d6dd12e910",
@@ -1441,19 +829,7 @@
     "scheduled_arrival": "2025-02-01T15:15",
     "distance_km": 4649,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "42",
-      "arr_terminal": null,
-      "arr_gate": null,
-      "aircraft_type": "Airbus A350-900",
-      "tail_number": "HSTHH",
-      "actual_gate_departure": "2025-02-01T09:50",
-      "actual_takeoff": "2025-02-01T10:02",
-      "actual_landing": "2025-02-01T14:37",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "2b9d1e87-d416-468f-b541-0db0f42b0814",
@@ -1469,19 +845,7 @@
     "scheduled_arrival": "2025-02-01T20:25",
     "distance_km": 597,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": null,
-      "dep_gate": null,
-      "arr_terminal": null,
-      "arr_gate": null,
-      "aircraft_type": "Airbus A320",
-      "tail_number": "HSTXA",
-      "actual_gate_departure": "2025-02-01T19:41",
-      "actual_takeoff": "2025-02-01T19:46",
-      "actual_landing": "2025-02-01T20:42",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "b6c6231a-429c-46c8-b27c-2637076be70a",
@@ -1497,19 +861,7 @@
     "scheduled_arrival": "2025-02-08T22:20",
     "distance_km": 1605,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": null,
-      "dep_gate": "7",
-      "arr_terminal": "1",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A320",
-      "tail_number": "BLPV",
-      "actual_gate_departure": "2025-02-08T19:33",
-      "actual_takeoff": "2025-02-08T19:46",
-      "actual_landing": "2025-02-08T23:06",
-      "actual_gate_arrival": "2025-02-08T23:23"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "3b5fdaee-c6cf-4437-ba30-417326931c58",
@@ -1525,19 +877,7 @@
     "scheduled_arrival": "2025-02-09T16:30",
     "distance_km": 2962,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "213",
-      "arr_terminal": "1",
-      "arr_gate": "17",
-      "aircraft_type": "Airbus A320",
-      "tail_number": "BLPY",
-      "actual_gate_departure": "2025-02-09T11:02",
-      "actual_takeoff": "2025-02-09T11:17",
-      "actual_landing": "2025-02-09T15:44",
-      "actual_gate_arrival": "2025-02-09T16:03"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "72c4a04b-fd7a-48de-8a43-3c13019be556",
@@ -1553,19 +893,7 @@
     "scheduled_arrival": "2025-03-13T23:40",
     "distance_km": 2949,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "34",
-      "arr_terminal": null,
-      "arr_gate": null,
-      "aircraft_type": "Boeing 737-800",
-      "tail_number": "B5400",
-      "actual_gate_departure": "2025-03-13T18:58",
-      "actual_takeoff": "2025-03-13T19:19",
-      "actual_landing": "2025-03-13T23:31",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "65f4c181-50fa-4412-97e8-af6657b7449e",
@@ -1581,19 +909,7 @@
     "scheduled_arrival": "2025-03-14T11:10",
     "distance_km": 1700,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": null,
-      "dep_gate": "306",
-      "arr_terminal": null,
-      "arr_gate": null,
-      "aircraft_type": "Airbus A320",
-      "tail_number": "B6351",
-      "actual_gate_departure": "2025-03-14T09:14",
-      "actual_takeoff": "2025-03-14T09:22",
-      "actual_landing": "2025-03-14T10:51",
-      "actual_gate_arrival": "2025-03-14T11:00"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "c4fc34f3-4b15-4b15-bfa2-0d8ede2e7cb0",
@@ -1609,19 +925,7 @@
     "scheduled_arrival": "2025-03-14T16:05",
     "distance_km": 568,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "2",
-      "dep_gate": null,
-      "arr_terminal": null,
-      "arr_gate": null,
-      "aircraft_type": "Airbus A321neo",
-      "tail_number": "HSEAD",
-      "actual_gate_departure": "2025-03-14T15:38",
-      "actual_takeoff": "2025-03-14T15:39",
-      "actual_landing": "2025-03-14T16:34",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "3a214610-5030-4ea1-b7ca-9e4241d8e5a4",
@@ -1637,19 +941,7 @@
     "scheduled_arrival": "2025-03-18T18:25",
     "distance_km": 568,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": null,
-      "dep_gate": "14",
-      "arr_terminal": "2",
-      "arr_gate": null,
-      "aircraft_type": "Boeing 737-800",
-      "tail_number": "HSLGM",
-      "actual_gate_departure": "2025-03-18T17:06",
-      "actual_takeoff": "2025-03-18T17:17",
-      "actual_landing": "2025-03-18T18:15",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "65b4c4d0-8d57-424a-81a1-b905b874fa45",
@@ -1665,19 +957,7 @@
     "scheduled_arrival": "2025-03-22T17:30",
     "distance_km": 741,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": null,
-      "arr_terminal": "2",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A321neo",
-      "tail_number": "HSEAB",
-      "actual_gate_departure": "2025-03-22T15:50",
-      "actual_takeoff": "2025-03-22T15:51",
-      "actual_landing": "2025-03-22T17:16",
-      "actual_gate_arrival": "2025-03-22T17:26"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "943d6709-c297-4f32-998a-75fdc421fd4e",
@@ -1693,19 +973,7 @@
     "scheduled_arrival": "2025-03-27T08:55",
     "distance_km": 309,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": null,
-      "arr_terminal": "1",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A321",
-      "tail_number": "VNA648",
-      "actual_gate_departure": "2025-03-27T08:45",
-      "actual_takeoff": "2025-03-27T08:45",
-      "actual_landing": "2025-03-27T09:30",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "c91c61b9-60a4-43e6-9cce-64859706553c",
@@ -1721,19 +989,7 @@
     "scheduled_arrival": "2025-03-28T09:55",
     "distance_km": 3254,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "2",
-      "dep_gate": null,
-      "arr_terminal": "I",
-      "arr_gate": "1",
-      "aircraft_type": "Airbus A321",
-      "tail_number": "VNA629",
-      "actual_gate_departure": null,
-      "actual_takeoff": "2025-03-28T03:21",
-      "actual_landing": "2025-03-28T09:27",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "49f6ca78-8310-405b-8bb0-aeffb0ac29e1",
@@ -1749,19 +1005,7 @@
     "scheduled_arrival": "2025-03-30T10:00",
     "distance_km": 1038,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "I",
-      "dep_gate": "8A",
-      "arr_terminal": "1",
-      "arr_gate": "34",
-      "aircraft_type": "Airbus A321",
-      "tail_number": "HL7211",
-      "actual_gate_departure": "2025-03-30T08:10",
-      "actual_takeoff": "2025-03-30T08:12",
-      "actual_landing": "2025-03-30T09:46",
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "3274bdb1-e777-4cdb-922c-90a76ebeccc3",
@@ -1777,19 +1021,7 @@
     "scheduled_arrival": "2025-06-14T14:25",
     "distance_km": 5358,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "T1S",
-      "dep_gate": "32",
-      "arr_terminal": "T1",
-      "arr_gate": "D32",
-      "aircraft_type": "Boeing 787-9",
-      "tail_number": "9VOJB",
-      "actual_gate_departure": "2025-06-14T08:18",
-      "actual_takeoff": "2025-06-14T08:39",
-      "actual_landing": "2025-06-14T13:51",
-      "actual_gate_arrival": "2025-06-14T13:59"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "1ed9435a-39c2-4bd8-a693-9914106a01f9",
@@ -1805,19 +1037,7 @@
     "scheduled_arrival": "2025-06-19T10:25",
     "distance_km": 2750,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "T4",
-      "dep_gate": "G8",
-      "arr_terminal": "T1",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A320",
-      "tail_number": "9VJSK",
-      "actual_gate_departure": "2025-06-19T08:43",
-      "actual_takeoff": "2025-06-19T08:57",
-      "actual_landing": "2025-06-19T09:49",
-      "actual_gate_arrival": "2025-06-19T09:52"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "c9935465-4080-441f-973c-9a08b688bb22",
@@ -1833,19 +1053,7 @@
     "scheduled_arrival": "2025-06-25T16:55",
     "distance_km": 2467,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "T1",
-      "dep_gate": "6",
-      "arr_terminal": "2",
-      "arr_gate": "L4",
-      "aircraft_type": "Airbus A320",
-      "tail_number": "9MAJP",
-      "actual_gate_departure": "2025-06-25T10:40",
-      "actual_takeoff": "2025-06-25T10:48",
-      "actual_landing": "2025-06-25T16:43",
-      "actual_gate_arrival": "2025-06-25T16:49"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "1747eb79-1b60-40bf-8c0a-82ed40a97bfb",
@@ -1861,19 +1069,7 @@
     "scheduled_arrival": "2025-07-01T16:35",
     "distance_km": 705,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "2",
-      "dep_gate": "P11",
-      "arr_terminal": "D",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A320",
-      "tail_number": "9MRAD",
-      "actual_gate_departure": "2025-07-01T17:01",
-      "actual_takeoff": "2025-07-01T17:18",
-      "actual_landing": "2025-07-01T17:24",
-      "actual_gate_arrival": "2025-07-01T17:28"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "0b9dc68e-c835-4070-9e13-651340217ba1",
@@ -1889,19 +1085,7 @@
     "scheduled_arrival": "2025-07-05T18:15",
     "distance_km": 692,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "2",
-      "dep_gate": "84",
-      "arr_terminal": "2",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A320neo",
-      "tail_number": "HSCBH",
-      "actual_gate_departure": "2025-07-05T17:05",
-      "actual_takeoff": "2025-07-05T17:10",
-      "actual_landing": "2025-07-05T18:17",
-      "actual_gate_arrival": "2025-07-05T18:21"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "5e8d0469-a18d-4666-a52b-a2986858a70e",
@@ -1917,19 +1101,7 @@
     "scheduled_arrival": "2025-07-12T20:00",
     "distance_km": 4645,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "12",
-      "arr_terminal": "2",
-      "arr_gate": "62",
-      "aircraft_type": "Airbus A330-300",
-      "tail_number": "HSXTI",
-      "actual_gate_departure": "2025-07-12T11:55",
-      "actual_takeoff": "2025-07-12T11:56",
-      "actual_landing": "2025-07-12T20:00",
-      "actual_gate_arrival": "2025-07-12T20:16"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "eb146c59-590f-454d-a67d-7bd05d3a9889",
@@ -1945,19 +1117,7 @@
     "scheduled_arrival": "2025-08-17T18:20",
     "distance_km": 1257,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "T2",
-      "dep_gate": "82",
-      "arr_terminal": "T1",
-      "arr_gate": "105",
-      "aircraft_type": "Boeing 737-800",
-      "tail_number": "HL8379",
-      "actual_gate_departure": "2025-08-17T16:51",
-      "actual_takeoff": "2025-08-17T17:20",
-      "actual_landing": "2025-08-17T19:18",
-      "actual_gate_arrival": "2025-08-17T19:23"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "e656c9a2-4d97-41b2-b822-c73c0e3e075b",
@@ -1973,19 +1133,7 @@
     "scheduled_arrival": "2025-08-18T19:00",
     "distance_km": 9594,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "T1",
-      "dep_gate": "32",
-      "arr_terminal": "T2",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A330-200",
-      "tail_number": "HL8276",
-      "actual_gate_departure": "2025-08-18T11:11",
-      "actual_takeoff": "2025-08-18T11:43",
-      "actual_landing": "2025-08-18T18:52",
-      "actual_gate_arrival": "2025-08-18T18:57"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "ab19de9c-9808-4da3-b4b5-5c46e876f2c3",
@@ -2001,19 +1149,7 @@
     "scheduled_arrival": "2025-08-23T06:55",
     "distance_km": 9864,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "T1",
-      "dep_gate": "D9",
-      "arr_terminal": "2",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A350-900",
-      "tail_number": "B321N",
-      "actual_gate_departure": "2025-08-22T13:18",
-      "actual_takeoff": "2025-08-22T13:18",
-      "actual_landing": "2025-08-23T06:35",
-      "actual_gate_arrival": "2025-08-23T06:36"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "f0a844d6-c17e-4e95-a2d8-b03266d0bb29",
@@ -2029,19 +1165,7 @@
     "scheduled_arrival": "2025-08-23T18:35",
     "distance_km": 1796,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "T2",
-      "dep_gate": "D61",
-      "arr_terminal": "T1S",
-      "arr_gate": "36",
-      "aircraft_type": "Airbus A350-900",
-      "tail_number": "B32DN",
-      "actual_gate_departure": "2025-08-23T15:48",
-      "actual_takeoff": "2025-08-23T16:18",
-      "actual_landing": "2025-08-23T19:56",
-      "actual_gate_arrival": "2025-08-23T20:06"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "ca970778-2571-4e40-8503-deef3ba9d22c",
@@ -2057,19 +1181,7 @@
     "scheduled_arrival": "2025-10-14T20:05",
     "distance_km": 3720,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "2",
-      "dep_gate": "99",
-      "arr_terminal": "2",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A321neo",
-      "tail_number": "VNA500",
-      "actual_gate_departure": "2025-10-14T16:45",
-      "actual_takeoff": "2025-10-14T17:01",
-      "actual_landing": "2025-10-14T20:13",
-      "actual_gate_arrival": "2025-10-14T20:17"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "b8841f8c-a08d-4531-abc6-68e883c6d331",
@@ -2085,19 +1197,7 @@
     "scheduled_arrival": "2025-10-21T11:00",
     "distance_km": 1160,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "T1",
-      "dep_gate": "17",
-      "arr_terminal": "T3",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A321",
-      "tail_number": "VNA289",
-      "actual_gate_departure": "2025-10-21T09:34",
-      "actual_takeoff": "2025-10-21T09:45",
-      "actual_landing": "2025-10-21T12:09",
-      "actual_gate_arrival": "2025-10-21T12:11"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "7c342365-32fe-4a13-bfcf-8881645bea04",
@@ -2113,19 +1213,7 @@
     "scheduled_arrival": "2025-10-23T17:45",
     "distance_km": 911,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "2",
-      "dep_gate": null,
-      "arr_terminal": "I",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A321",
-      "tail_number": "VNA544",
-      "actual_gate_departure": "2025-10-23T16:35",
-      "actual_takeoff": "2025-10-23T16:49",
-      "actual_landing": "2025-10-23T18:33",
-      "actual_gate_arrival": "2025-10-23T18:36"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "a8c50bed-cc1a-4633-b885-52b610e69c8e",
@@ -2141,19 +1229,7 @@
     "scheduled_arrival": "2025-11-02T07:15",
     "distance_km": 2293,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "T1",
-      "dep_gate": "4",
-      "arr_terminal": "I",
-      "arr_gate": null,
-      "aircraft_type": "Boeing 737-800",
-      "tail_number": "HSLGI",
-      "actual_gate_departure": "2025-11-02T02:53",
-      "actual_takeoff": "2025-11-02T03:07",
-      "actual_landing": "2025-11-02T07:12",
-      "actual_gate_arrival": "2025-11-02T07:17"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "24aa06e4-cbae-4040-b6ce-fa6b65189813",
@@ -2169,19 +1245,7 @@
     "scheduled_arrival": "2025-11-09T12:30",
     "distance_km": 2428,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "I",
-      "dep_gate": "32",
-      "arr_terminal": "T2",
-      "arr_gate": "96",
-      "aircraft_type": "Airbus A320",
-      "tail_number": "HSBBR",
-      "actual_gate_departure": "2025-11-09T07:48",
-      "actual_takeoff": "2025-11-09T07:57",
-      "actual_landing": "2025-11-09T12:02",
-      "actual_gate_arrival": "2025-11-09T12:11"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "bcbbe115-43b8-4edf-a1ce-eb12f0b7f2a3",
@@ -2197,19 +1261,7 @@
     "scheduled_arrival": "2025-12-05T14:45",
     "distance_km": 4645,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "T2",
-      "dep_gate": "65",
-      "arr_terminal": "T1",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A330-300",
-      "tail_number": "HSXTC",
-      "actual_gate_departure": "2025-12-05T09:25",
-      "actual_takeoff": "2025-12-05T09:46",
-      "actual_landing": "2025-12-05T15:04",
-      "actual_gate_arrival": "2025-12-05T15:08"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "f0bff042-eee5-4b03-88d9-272bbbe85ad7",
@@ -2225,19 +1277,7 @@
     "scheduled_arrival": "2025-12-09T09:15",
     "distance_km": 568,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "T2",
-      "dep_gate": "46",
-      "arr_terminal": "D",
-      "arr_gate": "4D",
-      "aircraft_type": "Boeing 737-800",
-      "tail_number": "HSDBQ",
-      "actual_gate_departure": "2025-12-09T07:51",
-      "actual_takeoff": "2025-12-09T08:06",
-      "actual_landing": "2025-12-09T08:56",
-      "actual_gate_arrival": "2025-12-09T09:00"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "b78fa18e-371c-4824-8bf8-031031f37755",
@@ -2253,19 +1293,7 @@
     "scheduled_arrival": "2025-12-23T09:20",
     "distance_km": 568,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "D",
-      "dep_gate": "4",
-      "arr_terminal": "T2",
-      "arr_gate": null,
-      "aircraft_type": "Boeing 737-800",
-      "tail_number": "HSDBV",
-      "actual_gate_departure": "2025-12-23T07:54",
-      "actual_takeoff": "2025-12-23T08:09",
-      "actual_landing": "2025-12-23T09:04",
-      "actual_gate_arrival": "2025-12-23T09:08"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "c8807497-883c-439e-b085-74a1ed42650a",
@@ -2281,19 +1309,7 @@
     "scheduled_arrival": "2025-12-25T00:30",
     "distance_km": 4966,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": null,
-      "dep_gate": "C7",
-      "arr_terminal": "A",
-      "arr_gate": "A7",
-      "aircraft_type": "Boeing 777-200 LR",
-      "tail_number": "A6LRE",
-      "actual_gate_departure": "2025-12-24T20:21",
-      "actual_takeoff": "2025-12-24T20:36",
-      "actual_landing": "2025-12-25T00:08",
-      "actual_gate_arrival": "2025-12-25T00:19"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "13fa10c3-b188-46df-87f7-31dced39f9e5",
@@ -2309,19 +1325,7 @@
     "scheduled_arrival": "2025-12-25T07:05",
     "distance_km": 5168,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "A",
-      "dep_gate": "B15",
-      "arr_terminal": "1",
-      "arr_gate": null,
-      "aircraft_type": "Boeing 787-9",
-      "tail_number": "A6BNC",
-      "actual_gate_departure": "2025-12-25T02:35",
-      "actual_takeoff": "2025-12-25T02:51",
-      "actual_landing": "2025-12-25T06:28",
-      "actual_gate_arrival": "2025-12-25T06:40"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "f098429d-4bab-4b29-8f95-2d70d83d73c4",
@@ -2337,19 +1341,7 @@
     "scheduled_arrival": "2026-01-24T13:25",
     "distance_km": 847,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "B28",
-      "arr_terminal": "1",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A320",
-      "tail_number": "EIEIA",
-      "actual_gate_departure": "2026-01-24T11:50",
-      "actual_takeoff": "2026-01-24T12:05",
-      "actual_landing": "2026-01-24T13:15",
-      "actual_gate_arrival": "2026-01-24T13:25"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "5033f3bb-c49d-4da1-a517-9bdadf80601c",
@@ -2365,19 +1357,7 @@
     "scheduled_arrival": "2026-01-25T11:20",
     "distance_km": 9893,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "E23",
-      "arr_terminal": "3",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A350-900",
-      "tail_number": "EIIFC",
-      "actual_gate_departure": "2026-01-24T15:18",
-      "actual_takeoff": "2026-01-24T15:37",
-      "actual_landing": "2026-01-25T10:59",
-      "actual_gate_arrival": "2026-01-25T11:04"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "7a81c541-7e98-44ca-8fd3-38b1e2fb77d5",
@@ -2393,19 +1373,7 @@
     "scheduled_arrival": "2026-02-20T13:55",
     "distance_km": 1038,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "T1S",
-      "dep_gate": "38",
-      "arr_terminal": "I",
-      "arr_gate": "1",
-      "aircraft_type": "Airbus A321",
-      "tail_number": "HL7211",
-      "actual_gate_departure": "2026-02-20T11:21",
-      "actual_takeoff": "2026-02-20T11:39",
-      "actual_landing": "2026-02-20T13:33",
-      "actual_gate_arrival": "2026-02-20T13:42"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "dc5c6df8-1f82-4928-b14b-3ad128dc8e01",
@@ -2421,19 +1389,7 @@
     "scheduled_arrival": "2026-03-17T12:20",
     "distance_km": 860,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "T1",
-      "dep_gate": "107",
-      "arr_terminal": "T2",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A320",
-      "tail_number": "JA12VA",
-      "actual_gate_departure": "2026-03-17T10:57",
-      "actual_takeoff": "2026-03-17T11:11",
-      "actual_landing": "2026-03-17T12:26",
-      "actual_gate_arrival": "2026-03-17T12:36"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "c156a149-92cb-4b77-9ff8-9e8a686e071b",
@@ -2449,19 +1405,7 @@
     "scheduled_arrival": "2026-05-12T14:35",
     "distance_km": 5358,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "T1S",
-      "dep_gate": "32",
-      "arr_terminal": "T1",
-      "arr_gate": "C15",
-      "aircraft_type": "Boeing 787-9",
-      "tail_number": "9VOJF",
-      "actual_gate_departure": "2026-05-12T08:21",
-      "actual_takeoff": "2026-05-12T08:41",
-      "actual_landing": "2026-05-12T14:22",
-      "actual_gate_arrival": "2026-05-12T14:29"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "007f5d45-d624-4b0d-b805-ccf2e6cb25d8",
@@ -2477,19 +1421,7 @@
     "scheduled_arrival": "2026-05-13T10:55",
     "distance_km": 882,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "T1",
-      "dep_gate": "D47",
-      "arr_terminal": "T3",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A320neo",
-      "tail_number": "9VTNJ",
-      "actual_gate_departure": "2026-05-13T10:03",
-      "actual_takeoff": "2026-05-13T10:16",
-      "actual_landing": "2026-05-13T10:42",
-      "actual_gate_arrival": "2026-05-13T10:49"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "6e29ea41-c8b7-4c8e-a567-c926763c6a56",
@@ -2505,19 +1437,7 @@
     "scheduled_arrival": "2026-05-20T14:45",
     "distance_km": 882,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "T3",
-      "dep_gate": "2",
-      "arr_terminal": "T1",
-      "arr_gate": "D38",
-      "aircraft_type": "Airbus A320neo",
-      "tail_number": "9VTNH",
-      "actual_gate_departure": "2026-05-20T12:11",
-      "actual_takeoff": "2026-05-20T12:23",
-      "actual_landing": "2026-05-20T14:41",
-      "actual_gate_arrival": "2026-05-20T14:47"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "4ee4eada-8941-4e30-b36c-861e786564dc",
@@ -2533,19 +1453,7 @@
     "scheduled_arrival": "2026-05-20T17:50",
     "distance_km": 1417,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "1",
-      "dep_gate": "D37",
-      "arr_terminal": "MAIN",
-      "arr_gate": "F6",
-      "aircraft_type": "Boeing 787-9",
-      "tail_number": "9VOJH",
-      "actual_gate_departure": "2026-05-20T16:17",
-      "actual_takeoff": "2026-05-20T16:30",
-      "actual_landing": "2026-05-20T17:29",
-      "actual_gate_arrival": "2026-05-20T17:36"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "99180ecf-dafa-456e-9a20-0cfc6a144d65",
@@ -2561,19 +1469,7 @@
     "scheduled_arrival": "2026-05-26T20:40",
     "distance_km": 4645,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "T1",
-      "dep_gate": "12",
-      "arr_terminal": "T2",
-      "arr_gate": "65",
-      "aircraft_type": "Airbus A330-300",
-      "tail_number": "HSXTN",
-      "actual_gate_departure": "2026-05-26T12:59",
-      "actual_takeoff": "2026-05-26T13:12",
-      "actual_landing": "2026-05-26T21:17",
-      "actual_gate_arrival": "2026-05-26T21:27"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "808022d7-24dc-48a1-896a-33542af45b17",
@@ -2589,19 +1485,7 @@
     "scheduled_arrival": "2026-07-03T00:20",
     "distance_km": 8088,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "T1N",
-      "dep_gate": "26",
-      "arr_terminal": "A",
-      "arr_gate": "B11",
-      "aircraft_type": "Airbus A380",
-      "tail_number": "A6APH",
-      "actual_gate_departure": "2026-07-02T17:56",
-      "actual_takeoff": "2026-07-02T18:16",
-      "actual_landing": "2026-07-02T23:42",
-      "actual_gate_arrival": "2026-07-02T23:49"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "c259a50d-b801-4915-a3a5-6a270a8eff2a",
@@ -2617,19 +1501,7 @@
     "scheduled_arrival": "2026-07-03T08:05",
     "distance_km": 5638,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "A",
-      "dep_gate": "D48",
-      "arr_terminal": "T4",
-      "arr_gate": null,
-      "aircraft_type": "Boeing 787-10",
-      "tail_number": "A6BMD",
-      "actual_gate_departure": "2026-07-03T02:17",
-      "actual_takeoff": "2026-07-03T02:39",
-      "actual_landing": "2026-07-03T07:37",
-      "actual_gate_arrival": "2026-07-03T07:46"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "e426f54f-6276-4b5b-b511-c4300e2c7539",
@@ -2645,19 +1517,7 @@
     "scheduled_arrival": "2026-07-08T19:40",
     "distance_km": 2756,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "T1",
-      "dep_gate": "A10",
-      "arr_terminal": null,
-      "arr_gate": null,
-      "aircraft_type": "Airbus A321neo",
-      "tail_number": "TCRFC",
-      "actual_gate_departure": "2026-07-08T15:03",
-      "actual_takeoff": "2026-07-08T15:23",
-      "actual_landing": "2026-07-08T19:58",
-      "actual_gate_arrival": "2026-07-08T20:00"
-    }
+    "source": "flighty_import"
   },
   {
     "id": "9c0c59a0-6598-4cf5-ab32-f43758c9c78a",
@@ -2673,19 +1533,7 @@
     "scheduled_arrival": "2026-07-13T04:35",
     "distance_km": 4835,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": null,
-      "dep_gate": null,
-      "arr_terminal": "2",
-      "arr_gate": null,
-      "aircraft_type": "Airbus A321",
-      "tail_number": "VTNLA",
-      "actual_gate_departure": null,
-      "actual_takeoff": null,
-      "actual_landing": null,
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   },
   {
     "id": "8c4424cc-3e51-415e-81c5-a3aef6f81a1a",
@@ -2701,18 +1549,6 @@
     "scheduled_arrival": "2026-07-13T19:15",
     "distance_km": 3031,
     "layover": null,
-    "source": "flighty_import",
-    "ops": {
-      "dep_terminal": "2",
-      "dep_gate": null,
-      "arr_terminal": null,
-      "arr_gate": null,
-      "aircraft_type": "Airbus A321neo",
-      "tail_number": null,
-      "actual_gate_departure": null,
-      "actual_takeoff": null,
-      "actual_landing": null,
-      "actual_gate_arrival": null
-    }
+    "source": "flighty_import"
   }
 ]

@@ -89,18 +89,8 @@ for (const row of rows) {
     distance_km: distance,
     layover: null,
     source: 'flighty_import',
-    ops: {
-      dep_terminal: empty(row['Dep Terminal']),
-      dep_gate: empty(row['Dep Gate']),
-      arr_terminal: empty(row['Arr Terminal']),
-      arr_gate: empty(row['Arr Gate']),
-      aircraft_type: empty(row['Aircraft Type Name']),
-      tail_number: empty(row['Tail Number']),
-      actual_gate_departure: normalizeLocalTime(row['Gate Departure (Actual)']),
-      actual_takeoff: normalizeLocalTime(row['Take off (Actual)']),
-      actual_landing: normalizeLocalTime(row['Landing (Actual)']),
-      actual_gate_arrival: normalizeLocalTime(row['Gate Arrival (Actual)']),
-    },
+    // 運航データ（ターミナル・ゲート・機材・実時刻）は保存しない。統計は事実フィールドと
+    // ローカル計算のみで成立し、飛行時間は公表スケジュールから算出する（正準モデル統一のため）
   });
   existingIds.add(id);
   added++;

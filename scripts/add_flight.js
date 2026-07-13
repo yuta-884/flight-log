@@ -101,7 +101,6 @@ if (manual) {
     distance_km: routeDistanceKm(airports, originIata, destIata, null),
     layover: null,
     source: 'manual',
-    ops: null,
   });
 } else {
   const [fn, date] = positional;
@@ -171,17 +170,7 @@ if (manual) {
     distance_km: routeDistanceKm(airports, dep.airport.iata, arr.airport.iata, null),
     layover: null,
     source: 'api',
-    ops: {
-      dep_terminal: dep.terminal ?? null,
-      dep_gate: dep.gate ?? null,
-      arr_terminal: arr.terminal ?? null,
-      arr_gate: arr.gate ?? null,
-      aircraft_type: leg.aircraft?.model ?? null,
-      tail_number: leg.aircraft?.reg ?? null,
-      actual_gate_departure: normalizeLocalTime(dep.revisedTime?.local),
-      actual_takeoff: normalizeLocalTime(dep.runwayTime?.local),
-      actual_landing: normalizeLocalTime(arr.runwayTime?.local),
-      actual_gate_arrival: normalizeLocalTime(arr.revisedTime?.local),
-    },
+    // AeroDataBox独自の運航データ（実時刻・機体番号・ゲート/ターミナル）は
+    // 利用規約により保存しない。保持するのは事実フィールド（区間・航空会社・公表スケジュール）のみ
   });
 }

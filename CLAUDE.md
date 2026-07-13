@@ -46,20 +46,11 @@
   "scheduled_arrival": "2022-07-15T21:45",
   "distance_km": 4611,                  // 登録・インポート時にHaversineで計算して保存
   "layover": null,                      // null=自動判定 / true / false で手動上書き
-  "source": "flighty_import",           // "api" | "manual" | "flighty_import"
-  "ops": {                              // 任意。AeroDataBoxで扱える運航データのみ
-    "dep_terminal": "1N", "dep_gate": "23",
-    "arr_terminal": null, "arr_gate": null,
-    "aircraft_type": "Boeing 787-8", "tail_number": "JA825J",
-    "actual_gate_departure": "2022-07-15T17:04",
-    "actual_takeoff": "2022-07-15T17:21",
-    "actual_landing": "2022-07-15T21:11",
-    "actual_gate_arrival": "2022-07-15T21:21"
-  }
+  "source": "flighty_import"            // "api" | "manual" | "flighty_import"
 }
 ```
 
-- `ops` は運航データ領域。総飛行時間の計算に使用（ゲート間基準: 実ゲート発着ペア→予定時刻→実離着陸の優先順）。Flightyインポート時はCSVから、API登録時はAeroDataBoxレスポンスから**同じスキーマ**で埋める（新旧フライトの構造統一が目的）
+- **運航データ（ops）は保存しない**（規約対応）: AeroDataBox独自の運航データ（実離着陸/実ゲート時刻・機体番号・ゲート/ターミナル）は利用規約により永続保存・公開表示しない。保持するのは事実フィールド（区間・航空会社・公表スケジュール）とローカル計算値（距離・国）のみ。総飛行時間は**公表スケジュールからの予定ブロックタイム**で算出（本アプリは搭乗記録であり遅延追跡ではないため実測は不要）
 - 個人記録系（PNR/座席/クラス/搭乗理由/メモ）は**保存しない**。`Flight Flighty ID` のみ重複防止キーとして `id` に流用
 - `data/airports.json`: `iata, name, city, country_code, country_name, lat, lon, tz`（OpenFlightsから生成、同梱。tzはローカル時刻→UTC換算用）
 - `data/airlines.json`: ICAO→IATA・名称解決用の航空会社マスタ（OpenFlightsから生成、同梱）
